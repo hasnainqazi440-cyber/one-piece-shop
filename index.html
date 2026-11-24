@@ -1,0 +1,1666 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>One Piece Shop — Hand-Picked Vintage Thrift | Mens, Womens, Kids, Home</title>
+<meta name="description" content="Hand-picked landa and vintage thrift in Gahkuch, Gilgit-Baltistan. Every piece is one of one. Browse Mens, Womens, Kids and Home sections, reserve your piece, and pick it up from the shop." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  /* ===== Theme: Belle Archive layout, burgundy & cream =====
+     Warm cream page #F5EFE3 (unchanged), deep burgundy / maroon
+     #6B1F2A — the Belle Archive burgundy — on main CTA buttons,
+     the dark bands, marquee, atelier band, footer and page heroes,
+     espresso-brown text #2B1B12, thin gold hairlines, SQUARE
+     corners everywhere, elegant serif headings, centred section
+     headings with a tiny small-caps label above.
+     Small shapes (nav, count line, Size/Condition/Details boxes) are
+     PLAIN CREAM with dark text and a hairline border — no fills. */
+  :root{
+    --paper:#f5efe3; --paper-deep:#efe5cf; --card:#fcf7eb; --card-2:#f3ead3;
+    --ink:#2b1b12; --espresso:#2b1b12; --forest:#6b1f2a; --forest-2:#822f42;
+    --rust:#6b1f2a; --wine:#6b1f2a; --brass:#b9975b;
+    --line:#d9c69c; --line-soft:#e7dcc0; --muted:#7c6a54;
+    --green:#476b2a; --amber:#8a6d1f; --red-soft:#8f5a2b;
+    --brown-deep:#40141f; --cream:#f7efdd; --cream-dim:#e6d5b8;
+    --wa:#25d366;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Jost",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:var(--forest)}
+  button,[role="button"],select,input,summary{min-height:44px}
+  .serif{font-family:"Cormorant Garamond",Georgia,serif}
+  .caps{letter-spacing:.26em;text-transform:uppercase;font-size:.7rem;font-weight:600}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+  section{scroll-margin-top:96px}
+
+  /* ===== Top bar — exactly like Belle Archive =====
+     Thin cream bar: LEFT plain small-caps text links (no pills, no
+     fills), CENTRE the brand name in elegant serif with a tiny tagline
+     underneath, RIGHT plain small-caps SEARCH and BAG / RESERVE. */
+  .site-header{position:sticky;top:0;z-index:70;background:rgba(245,239,227,.97);border-bottom:1px solid var(--line);transition:box-shadow .4s}
+  .site-header.scrolled{box-shadow:0 8px 26px rgba(43,27,18,.10)}
+  .site-header .bar{max-width:1280px;margin:0 auto;padding:14px 22px 12px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
+  .hnav{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  .hnav.right{justify-content:flex-end}
+  .hnav a{text-decoration:none;color:var(--ink);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:6px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+  .hnav a:hover{color:var(--forest);border-bottom-color:var(--brass)}
+  .brand{text-decoration:none;color:var(--ink);line-height:1;text-align:center;justify-self:center}
+  .brand .b-name{display:block;font-family:"Bodoni Moda","Didot",Georgia,serif;font-weight:700;font-size:1.55rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .brand .b-sub{display:block;margin-top:5px;font-family:"Jost",sans-serif;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  /* WhatsApp icon in the top bar */
+  .wa-head{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line);background:var(--card);cursor:pointer;padding:0}
+  .wa-head svg{width:18px;height:18px;fill:#1faa55;display:block}
+  .wa-head:hover{border-color:#1faa55}
+  /* Mobile: the bar is COMPACT and NOT sticky — it scrolls away with
+     the header, so it never covers the page while scrolling. Desktop
+     keeps the slim sticky bar. */
+  @media(max-width:900px){
+    .site-header{position:static}
+    .site-header .bar{grid-template-columns:1fr auto;gap:4px 10px;padding:8px 12px 7px}
+    .brand{order:-1;justify-self:start;text-align:left}
+    .brand .b-name{font-size:1.02rem;letter-spacing:.1em}
+    .brand .b-sub{font-size:.5rem;letter-spacing:.24em;margin-top:3px}
+    .hnav.left{grid-column:1/-1;justify-content:flex-start;gap:2px 14px;flex-wrap:wrap}
+    .hnav.left a{font-size:.62rem;letter-spacing:.12em;padding:3px 0}
+    .hnav.right{justify-content:flex-end;gap:10px}
+    .hnav.right a{font-size:.62rem;letter-spacing:.12em;padding:3px 0}
+    .wa-head{width:30px;height:30px}
+    .wa-head svg{width:16px;height:16px}
+    section{scroll-margin-top:20px}
+  }
+
+  /* ===== Hero — ONE PIECE SHOP on top, the rack row below =====
+     Layout copied from the shop's reference picture: the brand
+     name sits at the TOP over the burgundy-to-cream wall, and the
+     racks stand in one row below it — long coats, puffer jackets,
+     hoodies & sweaters, shirts & trousers, the small kids' rail,
+     then the folded carpets stack at the side. The headline is
+     real HTML text (never baked into the photo), so the hero
+     reads only "ONE PIECE SHOP" and "VINTAGE THRIFT".
+     FUTURE-PROOF RACKS: every rail is its OWN element
+     (.rack-rail in the markup, one per rail, in picture order).
+     Each rail shows its own slice of the shop photograph: the
+     <img> is sized by height (height:100%, natural aspect — never
+     cover-cropped or squeezed) and shifted by --i so that rail
+     always displays its own sixth of the photo, centred, at any
+     screen size. Any rail can later be swapped for its own photo
+     without touching the others, and a NEW rail (a new coat rail,
+     a carpet rail, any category) is added by copying one
+     .rack-rail block, setting its --i and label, and changing
+     the 16.6667% slice step (100% / rail count) to match.
+     Interaction: hovering or tapping a rail glides the whole row
+     (transform only, lerped in one rAF loop — iOS-smooth, 60fps)
+     until that rail sits in the CENTRE of the hero; the others
+     shift aside and dim a little. All rails are equal width and
+     normal size. Tapping a rail NEVER opens a product — there is
+     no spotlight. The one exception is the carpets stack:
+     tapping it fans open the Home varieties (fan-out below). */
+  .hero{position:relative;background:linear-gradient(100deg,#571824 0%,#6b1f2a 26%,#9c5a44 46%,#d3b58c 66%,#efe3cb 84%,#f3ead6 100%);border-bottom:1px solid var(--brass);overflow:hidden}
+  .hero-top{position:relative;max-width:1280px;margin:0 auto;padding:30px clamp(20px,5.5vw,84px) 20px;color:var(--cream)}
+  .hero h1{font-family:"Bodoni Moda","Didot",Georgia,serif;font-size:clamp(1.9rem,5.2vw,4.1rem);line-height:1.04;margin:0;color:#fbf4e0;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-shadow:0 2px 18px rgba(46,13,22,.45)}
+  .hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+  .hero h1 .ch{display:inline-block;will-change:transform,filter,opacity}
+  .hero-sub{margin-top:10px;font-size:.78rem;letter-spacing:.42em;text-transform:uppercase;font-weight:600;color:#f3e7cb;text-shadow:0 1px 8px rgba(46,13,22,.5)}
+  .hero-toprow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px}
+  .hero-tagline{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;line-height:1.2;color:#fbf4e0;text-shadow:0 1px 8px rgba(46,13,22,.55)}
+  .hero-cta-btn{background:var(--cream);border:1px solid var(--cream);color:var(--forest)}
+  .hero-cta-btn:hover{background:#fff;border-color:#fff;color:var(--forest)}
+  .hero-script-note{position:absolute;top:22px;right:clamp(20px,5.5vw,84px);pointer-events:none;font-family:"Great Vibes",cursive;font-size:1.5rem;line-height:1.25;color:var(--espresso);transform:rotate(-2deg);text-align:left;text-shadow:0 1px 0 rgba(247,239,221,.5)}
+  .rack-stage{position:relative;height:clamp(270px,30vw,400px);overflow:hidden}
+  .rack-track{display:flex;height:100%;will-change:transform}
+  .rack-rail{flex:1 1 0;min-width:0;position:relative;border:none;padding:0;margin:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;font-family:"Jost",sans-serif}
+  .rack-rail:focus-visible{outline:2px solid var(--brass);outline-offset:-3px}
+  .rail-view{position:absolute;inset:0;overflow:hidden;will-change:transform;transition:transform .55s cubic-bezier(.22,1.25,.36,1)}
+  .rail-view img{position:absolute;top:0;left:50%;height:100%;width:auto;max-width:none;transform:translateX(calc((var(--i) + .5) * -16.6667%))}
+  .rail-dim{position:absolute;inset:0;background:#2e0d16;opacity:0;transition:opacity .45s ease;pointer-events:none}
+  .rack-track.has-active .rack-rail:not(.is-active) .rail-view{transform:scale(.982)}
+  .rack-track.has-active .rack-rail:not(.is-active) .rail-dim{opacity:.17}
+  .rack-rail.is-active .rail-view{transform:scale(1.045)}
+  .rail-label{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:3;background:rgba(46,13,22,.85);color:var(--cream);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:6px 9px;white-space:nowrap;max-width:94%;overflow:hidden;text-overflow:ellipsis;transition:background .3s,box-shadow .3s}
+  .rack-rail.is-active .rail-label{background:var(--forest);box-shadow:inset 0 0 0 1px var(--brass)}
+  .dust{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+  .dust i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,228,166,.95) 0%,rgba(255,228,166,0) 70%);opacity:0;animation:dustfloat linear infinite;will-change:transform,opacity}
+  @keyframes dustfloat{0%{transform:translate3d(0,12px,0);opacity:0}12%{opacity:.7}55%{opacity:.38}100%{transform:translate3d(16px,-48px,0);opacity:0}}
+  .sweep{position:absolute;inset:0;pointer-events:none;z-index:4;background:linear-gradient(105deg,transparent 42%,rgba(255,240,200,.26) 50%,transparent 58%);transform:translate3d(-110%,0,0);animation:sweepmove 1.9s cubic-bezier(.4,0,.2,1) .5s 1 forwards;will-change:transform}
+  @keyframes sweepmove{to{transform:translate3d(110%,0,0)}}
+  .rack-hint{position:absolute;right:16px;top:12px;z-index:6;background:rgba(46,13,22,.8);color:var(--cream);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:7px 12px;pointer-events:none;animation:hintpulse 2.8s ease-in-out infinite}
+  @keyframes hintpulse{0%,100%{opacity:.95}50%{opacity:.55}}
+  @media(max-width:820px){
+    .hero-top{padding:20px 16px 14px}
+    .hero-script-note{display:none}
+    .hero-sub{font-size:.66rem;letter-spacing:.34em}
+    .hero-toprow{margin-top:12px;gap:12px}
+    .hero-tagline{font-size:1.1rem}
+    .rack-stage{height:264px}
+    .rail-label{font-size:.48rem;letter-spacing:.03em;padding:5px 4px;bottom:8px;white-space:normal;line-height:1.25;text-align:center;overflow:visible}
+    .rack-hint{right:10px;top:8px;font-size:.55rem;padding:6px 9px;letter-spacing:.12em}
+  }
+
+  /* ===== HOME FAN-OUT — the folded stack, opened like a deck ===== */
+  .fan-overlay{position:fixed;inset:0;z-index:99;display:none;align-items:flex-end;justify-content:center;padding:0 12px;background:rgba(35,10,17,0);transition:background .38s ease}
+  .fan-overlay.open{display:flex}
+  .fan-overlay.shown{background:rgba(35,10,17,.72)}
+  .fan-sheet{background:linear-gradient(170deg,#7d2838,var(--forest) 58%,#471420);border:1px solid var(--brass);border-bottom:none;width:100%;max-width:880px;padding:26px 22px 30px;color:var(--cream);position:relative;max-height:92vh;overflow:auto}
+  .fan-close{position:absolute;top:12px;right:12px;float:none;border-color:rgba(247,239,221,.55);color:var(--cream);background:transparent;z-index:3}
+  .fan-close:hover{border-color:var(--brass);color:#fff}
+  .fan-title{font-family:"Cormorant Garamond",serif;font-size:clamp(1.6rem,3.4vw,2.1rem);margin:8px 0 4px;line-height:1.1;color:#fbf3e2;font-weight:700}
+  .fan-title em{color:var(--cream-dim)}
+  .fan-sub{color:#ead9bd;margin:0;max-width:56ch}
+  .fan-deck{display:flex;gap:14px;justify-content:center;margin-top:20px;padding:6px 2px 2px}
+  .fan-card{flex:1 1 0;max-width:192px;background:var(--card);color:var(--ink);border:1px solid var(--brass);padding:10px 10px 14px;text-align:center;cursor:pointer;transform-origin:50% 100%;will-change:transform,opacity;font-family:"Jost",sans-serif;border-radius:0}
+  .fan-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .fan-card h4{font-family:"Cormorant Garamond",serif;margin:10px 0 2px;font-size:1.18rem;line-height:1.15;color:var(--espresso);font-weight:700}
+  .fan-card span{font-size:.8rem;color:var(--muted)}
+  @media(max-width:640px){.fan-deck{flex-wrap:wrap}.fan-card{flex-basis:44%;max-width:none}}
+
+  /* ===== Hero — JUST the photograph, whole and uncropped =====
+     One single base <img> at its natural aspect ratio (width:100%,
+     height:auto): nothing is cover-cropped, sliced or zoomed,
+     so the top of the rods and the bottom of the picture are
+     always fully visible, on desktop and on mobile alike.
+     PER-RAIL SWAY ONLY: the base picture NEVER moves — no
+     transform is ever applied to it, so the brand name, the
+     writing and the picture as a whole stay completely still.
+     Above the base sit full-size overlay copies of the same
+     picture, each clipped (clip-path inset) to ONE rail's
+     clothes only, starting JUST BELOW that rail's rod — the
+     rod itself exists ONLY in the static base and is never
+     part of any moving layer, so no rod can move a single
+     pixel. At rest an overlay sits exactly on the base, so
+     it is invisible and the picture looks whole. Only the
+     overlay of the rail under the cursor / finger moves,
+     and only by ROTATION about a pivot on the hanger hooks
+     just below the rod (no sideways dragging): the clothes
+     hang almost still at the hooks and swing a few pixels
+     at the hem, forward/back like hangers pushed along a
+     wardrobe rail. */
+  .hero-photo{position:relative;background:#efe3cb;border-bottom:1px solid var(--brass);line-height:0;overflow:hidden}
+  .hero-photo .hero-base{width:100%;height:auto;display:block;transform:none!important}
+  .rail-sway{position:absolute;inset:0;pointer-events:none;line-height:0}
+  .rail-sway img{width:100%;height:100%;display:block;will-change:transform}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:0;padding:13px 22px;font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--forest);cursor:pointer;transition:background .25s,color .25s;font-family:"Jost",sans-serif}
+  .btn-forest{background:var(--forest);color:#f7f2e9}
+  .btn-forest:hover{background:var(--forest-2)}
+  .btn-ghost{background:transparent;color:var(--forest)}
+  .btn-ghost:hover{background:rgba(107,31,42,.08)}
+  .btn-rust{background:var(--rust);border-color:var(--rust);color:#fff}
+  .btn-rust:hover{background:var(--forest-2)}
+  .btn-creamline{background:transparent;border-color:rgba(247,239,221,.75);color:var(--cream)}
+  .btn-creamline:hover{background:rgba(247,239,221,.13)}
+
+  /* ===== Marquee — thin burgundy band ===== */
+  .marquee{background:var(--forest);color:#efe7d7;overflow:hidden;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);position:relative;z-index:2}
+  .marquee-track{display:flex;width:max-content;animation:marq 36s linear infinite;padding:11px 0}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee span{white-space:nowrap;font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:0 10px}
+  .marquee b{color:var(--brass);font-weight:400}
+
+  /* ===== Centred section headings — Belle Archive style =====
+     Tiny small-caps label above, big serif title centred, and a small
+     VIEW ALL → link at the right edge of the heading row. */
+  .sec-title{position:relative;text-align:center;margin:0 auto 30px;max-width:820px}
+  .sec-title .caps{color:var(--rust)}
+  .sec-title h2{font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(1.85rem,3.8vw,2.6rem);color:var(--ink);margin:8px 0 0;line-height:1.12;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .sec-title h2 em{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;color:var(--forest)}
+  .sec-title p{color:var(--muted);margin:10px auto 0;max-width:58ch}
+  .sec-title .viewall-link{position:absolute;right:-150px;top:50%;transform:translateY(-50%);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .sec-title .viewall-link:hover{color:var(--forest)}
+  @media(max-width:1180px){.sec-title .viewall-link{right:-90px}}
+  @media(max-width:1020px){.sec-title .viewall-link{position:static;transform:none;display:inline-block;margin-top:12px}}
+
+  /* ===== OUR COLLECTIONS — portrait photo tiles, full frame =====
+     The category photos are tall portraits (Mens 2:3, Womens & Kids
+     1:2, Home carpets ~9:16) while the old tile was near-square with
+     object-fit:cover centred — that cropped the top and bottom of
+     every photo, cutting the models' heads (the Womens hijab and the
+     Mens wolf-cut hair disappeared) and their feet. The tile is now
+     a 3:5 portrait and the photo is shown whole with
+     object-fit:contain on the cream card ground, so the head, hijab /
+     hair and the full outfit down to the shoes stay inside the frame
+     — nothing is cropped. The hover zoom is off for the same reason:
+     scaling a contained photo would push its edges out of the frame
+     again. */
+  .collections{padding:54px 0 8px}
+  .catcircles .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .catcircles a{position:relative;flex:1 1 160px;max-width:272px;display:block;text-decoration:none;color:var(--cream)}
+  .catcircles a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;background:linear-gradient(180deg,rgba(43,27,18,0),rgba(43,27,18,.72));pointer-events:none}
+  .catcircles .circ{display:block;width:100%;aspect-ratio:3/5;overflow:hidden;border:1px solid var(--line);background:var(--card-2)}
+  .catcircles .circ img{width:100%;height:100%;object-fit:contain;object-position:50% 50%;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+  .catcircles a:hover .circ img{transform:none}
+  .catcircles .lbl{position:absolute;left:14px;bottom:12px;z-index:2;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#fdf6e9}
+  @media(max-width:560px){.catcircles .row{gap:10px}.catcircles a{flex-basis:44%}.catcircles .lbl{left:10px;bottom:9px;font-size:.7rem}}
+
+  /* ===== Search / filter toolbar — plain cream, hairline borders ===== */
+  .tools{padding:30px 0 4px}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;padding:0}
+  .toolbar input,.toolbar select{flex:1;min-width:160px;border:1px solid var(--line);border-radius:0;padding:11px 14px;font:inherit;background:var(--card);color:var(--ink)}
+  .toolbar input::placeholder{color:var(--muted)}
+  .toolbar select option{color:var(--ink);background:var(--card)}
+
+  /* ===== SIGNATURE PIECES — sliding carousel =====
+     Square cream cards in a horizontal track: swipe on mobile,
+     arrow buttons on the sides, gentle auto-slide on desktop,
+     looping through all 12 pieces. Tap a piece to open its detail. */
+  .signature{padding:44px 0 6px}
+  .sig-carousel{position:relative}
+  .sig-viewport{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth}
+  .sig-viewport::-webkit-scrollbar{display:none}
+  .sig-track{display:flex;gap:16px;width:max-content;padding:2px}
+  .sig-arrow{position:absolute;top:38%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border:1px solid var(--brass);background:rgba(252,247,235,.96);color:var(--forest);font-size:1.35rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif}
+  .sig-arrow:hover{background:var(--forest);color:var(--cream)}
+  .sig-arrow.prev{left:-8px}
+  .sig-arrow.next{right:-8px}
+  @media(max-width:640px){.sig-arrow{display:none}}
+  .sig-card{flex:0 0 218px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line-soft);padding:12px 12px 16px;text-align:center;cursor:pointer;color:var(--ink)}
+  @media(max-width:640px){.sig-card{flex-basis:164px}}
+  .sig-card:hover{border-color:var(--brass)}
+  .sig-card .sig-img{aspect-ratio:1/1;overflow:hidden;background:var(--card-2)}
+  .sig-card .sig-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1);-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+  .sig-card:hover .sig-img img{transform:scale(1.05)}
+  .sig-card h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.08rem;line-height:1.25;margin:12px 0 2px;color:var(--espresso)}
+  .sig-card .sig-price{font-size:.85rem;letter-spacing:.1em;color:var(--muted);font-weight:600}
+  .sig-card .sig-status{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);font-weight:600;margin-top:5px}
+
+  /* ===== Category highlight sections ===== */
+  .catsec{padding:56px 0 8px}
+  .sec-count{display:block;margin-top:8px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden;display:flex;flex-direction:column;color:var(--ink);box-shadow:0 10px 26px rgba(43,27,18,.07)}
+  .card .img{position:relative;aspect-ratio:4/4.3;overflow:hidden;background:var(--card-2);border-bottom:1px solid var(--line-soft)}
+  .card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+  .card:hover .img img{transform:scale(1.055)}
+  .status{position:absolute;top:12px;left:12px;background:rgba(252,247,235,.95);border:1px solid var(--line);border-radius:0;padding:5px 12px;font-family:"Jost",sans-serif;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+  .status.av{color:var(--green)} .status.rs{color:var(--amber)} .status.so{color:var(--red-soft)}
+  .pickup-only{position:absolute;bottom:12px;left:12px;background:rgba(252,247,235,.95);border:1px solid var(--line);color:var(--ink);padding:6px 10px;border-radius:0;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+  .card .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card .catlabel{font-family:"Jost",sans-serif;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);font-weight:600}
+  .card h3{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;line-height:1.15;margin:0;color:var(--espresso)}
+  .card .desc{color:var(--muted);font-size:.93rem;margin:0}
+  /* Size / Condition / Measurements boxes — plain cream, dark text,
+     thin hairline border only. No fills. */
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:.85rem}
+  .specs div{background:var(--card);border:1px solid var(--line);border-radius:0;padding:8px 10px;color:var(--ink)}
+  .specs b{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);font-weight:600}
+  .price-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line-soft)}
+  .price{font-size:1.3rem;font-weight:700;color:var(--espresso)}
+  .price small{font-size:.75rem;color:var(--muted);font-weight:500}
+  .one{font-family:"Jost",sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);font-weight:600}
+  .card .actions{display:flex;gap:8px}
+  .card .actions button{flex:1;border-radius:0;padding:11px 10px;font-weight:600;cursor:pointer;font-size:.9rem;font-family:"Jost",sans-serif}
+  /* WhatsApp buy options on every card: Buy Now (full) + Half Payment */
+  .card .wa-actions{display:flex;gap:8px}
+  .b-wa{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid #1faa55;color:#146c39;border-radius:0;padding:10px 6px;font-weight:600;cursor:pointer;font-size:.8rem;font-family:"Jost",sans-serif;letter-spacing:.02em}
+  .b-wa svg{width:15px;height:15px;fill:#1faa55;flex:none}
+  .b-wa:hover{background:rgba(37,211,102,.1)}
+  .b-wa:disabled{border-color:var(--line);color:var(--muted);cursor:not-allowed;background:transparent}
+  .b-wa:disabled svg{fill:var(--muted)}
+  /* Modal WhatsApp buttons */
+  .m-wa{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  .m-wa .b-wa{padding:12px 10px;font-size:.88rem}
+  /* Single Buy Now button under every product (cards + detail modal).
+     Tapping it opens the Buy panel with the two payment choices. */
+  .b-buynow{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--forest);border:1px solid var(--forest);color:var(--cream);border-radius:0;padding:11px 10px;font-weight:700;cursor:pointer;font-size:.86rem;font-family:"Jost",sans-serif;letter-spacing:.1em;text-transform:uppercase}
+  .b-buynow svg{width:15px;height:15px;fill:var(--cream);flex:none}
+  .b-buynow:hover{background:var(--forest-2);border-color:var(--forest-2)}
+  .b-buynow:disabled{background:transparent;border-color:var(--line);color:var(--muted);cursor:not-allowed}
+  .b-buynow:disabled svg{fill:var(--muted)}
+  /* Buy panel — the two payment choices, explained */
+  #buyOverlay{z-index:97}
+  #waOverlay{z-index:98}
+  .buy-choice{border:1px solid var(--line);background:var(--card);padding:18px;margin-top:14px}
+  .buy-choice h4{font-family:"Cormorant Garamond",serif;font-size:1.3rem;margin:0 0 4px;color:var(--espresso);line-height:1.2}
+  .buy-choice .buy-amt{font-weight:700;color:var(--forest);font-size:1.02rem}
+  .buy-choice p{color:var(--muted);font-size:.92rem;margin:6px 0 12px}
+  .buy-choice .b-wa{width:100%;padding:12px 10px;font-size:.88rem}
+  /* Floating WhatsApp button */
+  .wa-float{position:fixed;right:18px;bottom:18px;z-index:96;width:56px;height:56px;border-radius:50%;background:var(--wa);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(20,40,20,.35)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+  .wa-float:hover{background:#1eb856}
+  /* WhatsApp message sheet (shown until the shop number is added) */
+  .wa-sheet-msg{background:var(--card-2);border:1px solid var(--line);padding:14px;font-size:.92rem;white-space:pre-wrap;color:var(--ink);margin:12px 0 0}
+  .b-detail{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .b-detail:hover{border-color:var(--forest);color:var(--forest)}
+  .b-reserve{background:var(--forest);border:1px solid var(--forest);color:var(--cream)}
+  .b-reserve:hover{background:var(--forest-2)}
+  .b-reserve:disabled{background:transparent;border-color:var(--line);color:var(--muted);cursor:not-allowed}
+  .sec-empty{display:none;color:var(--muted);border:1px solid var(--line);border-radius:0;padding:20px;text-align:center;background:var(--card)}
+  .viewall{margin:22px 0 10px;text-align:center}
+
+  /* ===== Reserve steps ===== */
+  section.block{padding:62px 0}
+  .block-head{max-width:720px;margin:0 auto 32px;text-align:center}
+  .block-head .caps{color:var(--rust)}
+  .block-head h2{font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(1.85rem,3.8vw,2.6rem);color:var(--ink);margin:10px 0 8px;line-height:1.12;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  .block-head h2 em{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;color:var(--forest)}
+  .block-head p{color:var(--muted);margin:0}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:0;padding:24px}
+  .step .n{font-family:"Cormorant Garamond",serif;font-size:1.4rem;color:var(--forest);font-style:italic;background:transparent;width:52px;height:52px;border:1px solid var(--brass);border-radius:0;display:flex;align-items:center;justify-content:center}
+  .step h3{margin:12px 0 6px;color:var(--espresso);font-size:1.05rem;font-weight:600;letter-spacing:.03em}
+  .step p{margin:0;color:var(--muted);font-size:.92rem}
+  .step p strong,.rules li strong{color:var(--espresso)}
+  .rules{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:0;padding:22px}
+  .rules h3{font-family:"Cormorant Garamond",serif;color:var(--espresso);margin:0 0 10px;font-size:1.4rem}
+  .rules ul{margin:0;padding-left:20px;color:var(--ink)}
+  .rules li{margin:6px 0}
+
+  /* ===== Fresh Drop (every 3 days) — near the end ===== */
+  .dropband{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:0;padding:36px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+  @media(max-width:860px){.dropband{grid-template-columns:1fr}}
+  .dropband h2{font-family:"Cormorant Garamond",serif;color:var(--espresso);margin:8px 0;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.08;font-weight:700}
+  .dropband h2 em{color:var(--rust);font-style:italic}
+  .dropband p{color:var(--muted);margin:0;max-width:56ch}
+  .dropclock{text-align:center;background:var(--card-2);border:1px solid var(--brass);border-radius:0;padding:24px}
+  .dropclock .cd{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:2.4rem;color:var(--espresso);letter-spacing:.08em}
+  .dropclock span{display:block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .dropclock .cd-date{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:600;color:var(--rust);margin-top:10px;letter-spacing:.02em}
+
+  /* ===== About — the burgundy atelier band =====
+     Like the reference's "A Story in Every Stitch": deep burgundy
+     band, photo left, cream serif copy centre, a small framed photo
+     with a script note on the right; the two stock panels stay as
+     cream cards on the band. */
+  .atelier{background:linear-gradient(165deg,#7d2838,var(--forest) 52%,#471420);color:var(--cream)}
+  .atelier-grid{display:grid;grid-template-columns:1fr 1.25fr .62fr;gap:30px;align-items:center;margin-bottom:30px}
+  @media(max-width:900px){.atelier-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.atelier-grid{grid-template-columns:1fr}}
+  .atelier-photo{border:1px solid rgba(247,239,221,.35);overflow:hidden}
+  .atelier-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.4}
+  .atelier-copy .caps{color:var(--brass)}
+  .atelier-copy h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4.2vw,3rem);line-height:1.08;margin:12px 0 12px;color:#fbf3e2;font-weight:700}
+  .atelier-copy h2 em{font-style:italic;color:var(--cream-dim)}
+  .atelier-copy p{color:#ead9bd;margin:0 0 22px;max-width:52ch}
+  .atelier-side{text-align:center}
+  .atelier-side .fr{border:1px solid rgba(247,239,221,.5);padding:6px;background:rgba(247,239,221,.06)}
+  .atelier-side img{width:100%;aspect-ratio:4/4.6;object-fit:cover}
+  .atelier-side .script-note{font-family:"Great Vibes",cursive;font-size:1.5rem;color:var(--cream-dim);margin-top:10px;line-height:1.2;transform:rotate(-2deg)}
+  @media(max-width:900px){.atelier-side{display:none}}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+  @media(max-width:860px){.split{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:0;padding:26px;color:var(--ink)}
+  .panel h3{font-family:"Cormorant Garamond",serif;color:var(--espresso);font-size:1.6rem;margin:0 0 10px;font-weight:700}
+  .panel p,.panel li{color:var(--ink)}
+  .stocklist{columns:2;column-gap:26px;margin:0;padding-left:18px}
+  @media(max-width:520px){.stocklist{columns:1}}
+  .stocklist li{margin:5px 0;break-inside:avoid}
+  details{background:var(--card);border:1px solid var(--line);border-radius:0;padding:6px 18px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:var(--espresso);padding:10px 0}
+  details p{color:var(--muted);margin:0 0 14px}
+  .visit{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:0;padding:36px;text-align:center}
+  .visit h2{font-family:"Cormorant Garamond",serif;color:var(--espresso);margin:0 0 8px;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;line-height:1.1}
+  .visit p{color:var(--muted);max-width:62ch;margin:0 auto 20px}
+
+  /* ===== Footer — burgundy band, "Become Part of the Archive" style ===== */
+  footer{background:linear-gradient(180deg,var(--forest),#471420);color:var(--cream-dim);padding:52px 0 40px;text-align:center;border-top:1px solid var(--brass)}
+  footer .f-caps{color:var(--brass)}
+  footer .f-title{font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:.08em;text-transform:uppercase;color:#fbf3e2;margin:12px 0 10px;font-weight:700}
+  footer p{margin:0 auto;max-width:60ch;color:#e2d0ac;font-size:.95rem}
+  footer .f-links{margin:22px 0 6px;display:flex;gap:8px 22px;flex-wrap:wrap;justify-content:center}
+  footer .f-links a{color:var(--cream);text-decoration:none;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+  footer .f-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  footer .f-base{border-top:1px solid rgba(247,239,221,.22);margin-top:24px;padding-top:18px;font-size:.85rem;color:#cdbd97}
+
+  /* ===== Separate category pages & view switching ===== */
+  [hidden]{display:none!important}
+  .backlink{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;border-radius:0;border:1px solid rgba(194,161,100,.6);color:var(--cream);background:rgba(46,14,22,.55)}
+  .backlink:hover{border-color:var(--brass);color:#fff}
+  .backlink.on-light{color:var(--forest);background:transparent;border-color:var(--forest)}
+  .backlink.on-light:hover{background:rgba(107,31,42,.08);color:var(--forest)}
+  .page-hero{position:relative;overflow:hidden;background:var(--brown-deep);padding:58px 0 46px}
+  .page-hero .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(.28) contrast(1.02)}
+  .page-hero .shade{position:absolute;inset:0;background:linear-gradient(92deg,rgba(46,14,22,.95) 26%,rgba(46,14,22,.68) 62%,rgba(46,14,22,.38))}
+  .page-hero .caps{color:var(--brass)}
+  .page-hero h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.7rem,6.4vw,4.4rem);line-height:1.02;color:#fff;margin:10px 0 8px;font-weight:700}
+  .page-hero h2 em{color:var(--brass);font-style:italic}
+  .page-hero p{color:#e8dfcc;max-width:56ch;margin:0}
+  .page-count{display:inline-block;margin-top:16px;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:0;padding:7px 13px;font-weight:700}
+  .page-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .page-nav a{text-decoration:none;color:var(--cream);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:9px 15px;border:1px solid rgba(194,161,100,.6);border-radius:0;background:rgba(46,14,22,.5)}
+  .page-nav a:hover{border-color:var(--brass);color:#fff}
+  .page-nav a.here{background:var(--card);border-color:var(--card);color:var(--ink)}
+  /* Sub-category strip on category pages — square chips in the same
+     cream / burgundy styling; the active chip is filled cream. */
+  .subcat-label{margin-top:24px;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--brass)}
+  .subcat-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .subcat-strip button{appearance:none;text-decoration:none;color:var(--cream);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 15px;border:1px solid rgba(194,161,100,.65);border-radius:0;background:rgba(46,14,22,.5);cursor:pointer;font-family:"Jost",sans-serif;min-height:44px}
+  .subcat-strip button:hover{border-color:var(--brass);color:#fff}
+  .subcat-strip button.here{background:var(--card);border-color:var(--card);color:var(--forest)}
+
+  /* ===== Product detail page ===== */
+  .card .img{cursor:pointer}
+  .detail-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:start}
+  @media(max-width:860px){.detail-grid{grid-template-columns:1fr;gap:22px}}
+  .detail-img{border:1px solid var(--line);background:var(--card-2);overflow:hidden}
+  .detail-img img{width:100%;aspect-ratio:4/4.2;object-fit:cover}
+  .detail-info h2{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:clamp(1.9rem,3.6vw,2.5rem);line-height:1.1;margin:6px 0 8px;color:var(--espresso)}
+  .detail-info .price{font-size:1.5rem}
+  /* Reviews & feedback on the detail page */
+  .reviews-sec{margin-top:52px;border-top:1px solid var(--line);padding-top:34px;max-width:820px}
+  .rev-h{font-family:"Cormorant Garamond",serif;font-size:1.7rem;margin:6px 0 4px;color:var(--espresso);font-weight:700}
+  .rev-avg{display:flex;align-items:center;gap:10px;margin:6px 0 4px;font-weight:600;flex-wrap:wrap}
+  .stars{color:var(--brass);letter-spacing:.14em;font-size:1.05rem}
+  .rev-empty{color:var(--muted);border:1px dashed var(--line);padding:16px;text-align:center;background:var(--card);margin-top:14px}
+  .rev-item{border:1px solid var(--line);background:var(--card);padding:16px 18px;margin-top:12px}
+  .rev-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .rev-date{color:var(--muted);font-size:.8rem}
+  .rev-text{margin:6px 0 4px;color:var(--ink)}
+  .rev-reply-btn{background:none;border:none;color:var(--forest);font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:6px 2px;font-family:"Jost",sans-serif}
+  .rev-reply-btn:hover{text-decoration:underline;text-underline-offset:3px}
+  .rev-replies{margin:2px 0 0 14px}
+  .rev-reply{background:var(--card-2);border:1px solid var(--line-soft);padding:10px 12px;margin-top:8px}
+  .rev-reply p{margin:2px 0 0;color:var(--ink);font-size:.94rem}
+  .reply-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .reply-form input{flex:1;min-width:140px;border:1px solid var(--line);background:var(--card);padding:10px 12px;font:inherit;color:var(--ink)}
+  .rev-form{margin-top:22px;border:1px solid var(--line);background:var(--card);padding:20px;display:flex;flex-direction:column;gap:12px}
+  .rev-label{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--forest);font-weight:600}
+  .star-input{display:flex;gap:2px}
+  .star-input button{background:none;border:none;font-size:1.7rem;line-height:1;color:var(--line);cursor:pointer;padding:2px 4px;font-family:inherit}
+  .star-input button.on{color:var(--brass)}
+  .rev-form input[type="text"],.rev-form textarea{border:1px solid var(--line);background:var(--paper);padding:11px 14px;font:inherit;color:var(--ink);width:100%}
+  .related-sec{margin-top:56px;border-top:1px solid var(--line);padding-top:36px}
+
+  /* Modal */
+  .overlay{position:fixed;inset:0;background:rgba(43,27,18,.62);z-index:90;display:none;align-items:flex-end;justify-content:center;padding:0}
+  .overlay.open{display:flex}
+  .modal{background:var(--card);color:var(--ink);width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:0;padding:0}
+  @media(min-width:700px){.overlay{align-items:center;padding:20px}}
+  .modal .mimg{aspect-ratio:16/9;overflow:hidden}
+  .modal .mimg img{width:100%;height:100%;object-fit:cover}
+  .modal .mbody{padding:24px}
+  .modal h3{font-family:"Cormorant Garamond",serif;color:var(--espresso);font-size:1.8rem;margin:4px 0 8px;line-height:1.15;font-weight:700}
+  .close{float:right;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:0;width:44px;height:44px;font-size:1.1rem;cursor:pointer}
+  .close:hover{border-color:var(--forest);color:var(--forest)}
+  .codebox{background:var(--card);border:1px solid var(--brass);border-radius:0;padding:16px;text-align:center;margin-top:14px;display:none}
+  .codebox strong{font-family:"Courier Prime",monospace;font-size:1.4rem;color:var(--forest);letter-spacing:.06em}
+  .codebox p{color:var(--muted)}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:95;background:var(--forest);color:#fff;padding:13px 18px;border-radius:0;font-weight:600;display:none;max-width:92vw;text-align:center}
+  .toast.show{display:block}
+  @media (prefers-reduced-motion: reduce){
+    *,*:before,*:after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;scroll-behavior:auto !important}
+    .marquee-track{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR — Belle Archive: left links · centre brand · right links ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="bar">
+    <nav class="hnav left" aria-label="Categories">
+      <a href="#/mens">Mens</a>
+      <a href="#/womens">Womens</a>
+      <a href="#/kids">Kids</a>
+      <a href="#/home">Home</a>
+      <a href="#/reserve">How to Reserve</a>
+    </nav>
+    <a class="brand" href="#top" aria-label="One Piece Shop home">
+      <span class="b-name">One Piece Shop</span>
+      <span class="b-sub">Vintage Thrift</span>
+    </a>
+    <nav class="hnav right" aria-label="Search and reserve">
+      <a href="#search">Search</a>
+      <a href="#/reserve">Bag / Reserve</a>
+      <button class="wa-head" type="button" data-wa-general aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.19.35-.58.35-1.08.25-1.19-.1-.1-.23-.16-.48-.28z"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div id="view-home">
+  <!-- HERO — JUST the shop's full rack photograph, exactly as
+       sent: one single picture shown WHOLE and uncropped (natural
+       aspect ratio, top of the rods to the bottom, every rail
+       equal). The "ONE PIECE SHOP / VINTAGE THRIFT" lettering is
+       part of the picture itself, so there is NO overlaid
+       headline, tagline, button, note, label or hint on the hero.
+       The base picture NEVER moves, and neither does any rail's
+       ROD: every overlay clip starts JUST BELOW its rod (rod
+       bottoms measured on the photo: main rails ≈38–40% of the
+       height, kids rail ≈56.4%), so the rods live only in the
+       static base. The only animation: invisible overlay copies
+       of the same picture, each clipped to one rail's hangers
+       and clothes below the rod — long coats, puffers, hoodies
+       & sweaters, shirts & trousers, kids rail (the folded
+       carpets have no hangers and never move). Moving the
+       cursor over a rail (or tapping it) rotates ONLY that
+       rail's overlay a fraction of a degree about the hanger
+       hooks just below the rod — hangers and clothes shift
+       gently forward/back, the rod stays perfectly still, and
+       every other rail, the brand name and the writing stay
+       perfectly still too. At rest each overlay aligns exactly
+       with the base, so the picture looks whole and uncropped.
+       Tapping a rail does nothing else: no slide, no fan-out,
+       no product opens. See the hero script at the end. -->
+  <div class="hero-photo" id="heroPhoto">
+    <img class="hero-base" id="heroImg" src="assets/hero-full-shop.webp" alt="One Piece Shop — Vintage Thrift: the whole shop in one picture — rails of long coats, puffer jackets, hoodies and sweaters, shirts and trousers, a small kids' rail and a stack of folded carpets" fetchpriority="high">
+    <div class="rail-sway" data-rail="0" style="clip-path:inset(38.4% 83.2% 0% 0%)" aria-hidden="true"><img data-ox="8.4%" data-oy="38.4%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+    <div class="rail-sway" data-rail="1" style="clip-path:inset(38.4% 68.8% 0% 16.8%)" aria-hidden="true"><img data-ox="24%" data-oy="38.4%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+    <div class="rail-sway" data-rail="2" style="clip-path:inset(39.8% 46.2% 0% 31.2%)" aria-hidden="true"><img data-ox="42.5%" data-oy="39.8%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+    <div class="rail-sway" data-rail="3" style="clip-path:inset(40.3% 30.2% 0% 53.8%)" aria-hidden="true"><img data-ox="61.8%" data-oy="40.3%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+    <div class="rail-sway" data-rail="4" style="clip-path:inset(56.8% 15.8% 0% 69.8%)" aria-hidden="true"><img data-ox="77%" data-oy="56.8%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+    <div class="rail-sway" data-rail="5" style="clip-path:inset(37% 0% 0% 84.2%)" aria-hidden="true"><img data-ox="92%" data-oy="40%" src="assets/hero-full-shop.webp" alt="" aria-hidden="true"></div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+  <!-- OUR COLLECTIONS — centred heading, portrait photo tiles shown full-frame (no crop, heads & full outfits stay in view) -->
+  <section class="collections catcircles" id="collections">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Explore</div>
+        <h2>Our Collections</h2>
+        <a class="viewall-link" href="#signature">View All →</a>
+      </div>
+      <nav class="row" aria-label="Shop by category">
+        <a href="#/mens"><span class="circ"><img src="assets/model-mens-puffer.webp" alt="Mens — male model with long wolf-cut hair in a black puffer jacket, full outfit"></span><span class="lbl">Mens</span></a>
+        <a href="#/womens"><span class="circ"><img src="assets/model-womens-camel-coat.webp" alt="Womens — model in hijab wearing a long camel coat, full outfit"></span><span class="lbl">Womens</span></a>
+        <a href="#/kids"><span class="circ"><img src="assets/model-kids-navy-coat.webp" alt="Kids — boy model in a navy puffer coat, full outfit"></span><span class="lbl">Kids</span></a>
+        <a href="#/home"><span class="circ"><img src="assets/carpets.jpg" alt="Home — traditional carpets"></span><span class="lbl">Home</span></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- SEARCH / FILTER — plain cream bar -->
+  <div class="tools" id="tools">
+    <div class="wrap">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search — coat, hoodie, carpet, frock…" aria-label="Search pieces">
+        <select id="statusFilter" aria-label="Status filter"><option value="all">Status: All</option><option value="Available">Available only</option><option value="Reserved">Reserved</option><option value="Sold">Sold</option></select>
+        <select id="sort" aria-label="Sort"><option value="fresh">Sort: Newest first</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE PIECES — Belle Archive product row -->
+  <section class="signature" id="signature">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Featured</div>
+        <h2>Signature Pieces</h2>
+        <a class="viewall-link" href="#mens">Shop All →</a>
+      </div>
+      <div class="sig-carousel">
+        <button class="sig-arrow prev" id="sigPrev" type="button" aria-label="Previous pieces">‹</button>
+        <div class="sig-viewport" id="sigViewport"><div class="sig-track" id="sigGrid"></div></div>
+        <button class="sig-arrow next" id="sigNext" type="button" aria-label="Next pieces">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 01 · MENS ============ -->
+  <section class="catsec" id="mens">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Collection — 01</div>
+        <h2>Mens <em>Winter Edit</em></h2>
+        <p>Coats, jackets, shirts, hoodies, trousers and tights — a few highlights below. Open the full Mens page to see every piece.</p>
+        <span class="sec-count" id="count-mens"></span>
+        <a class="viewall-link" href="#/mens">View All →</a>
+      </div>
+      <div class="grid" id="grid-mens"></div>
+      <div class="sec-empty" data-empty="mens">No men's piece matches this filter. Try another search — or wait for the next fresh drop — a new one lands every 3 days.</div>
+      <div class="viewall"><a class="btn btn-forest" href="#/mens">View All Mens Pieces →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 02 · WOMENS ============ -->
+  <section class="catsec" id="womens">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Collection — 02</div>
+        <h2>Womens <em>Coats &amp; Layers</em></h2>
+        <p>Long coats, coats, koti, small hoodies and tights — highlights below. The full Womens page has every piece.</p>
+        <span class="sec-count" id="count-womens"></span>
+        <a class="viewall-link" href="#/womens">View All →</a>
+      </div>
+      <div class="grid" id="grid-womens"></div>
+      <div class="sec-empty" data-empty="womens">No women's piece matches this filter. Try another search — or wait for the next fresh drop — a new one lands every 3 days.</div>
+      <div class="viewall"><a class="btn btn-forest" href="#/womens">View All Womens Pieces →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 03 · KIDS ============ -->
+  <section class="catsec" id="kids">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Collection — 03</div>
+        <h2>Kids <em>Boys &amp; Girls</em></h2>
+        <p>Small coats, shirts, high-necks, trousers, frocks, koti and vests — highlights below. The full Kids page has every piece.</p>
+        <span class="sec-count" id="count-kids"></span>
+        <a class="viewall-link" href="#/kids">View All →</a>
+      </div>
+      <div class="grid" id="grid-kids"></div>
+      <div class="sec-empty" data-empty="kids">No kids' piece matches this filter. Try another search — or wait for the next fresh drop — a new one lands every 3 days.</div>
+      <div class="viewall"><a class="btn btn-forest" href="#/kids">View All Kids Pieces →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 04 · HOME ============ -->
+  <section class="catsec" id="home">
+    <div class="wrap">
+      <div class="sec-title reveal">
+        <div class="caps">Collection — 04</div>
+        <h2>Home <em>Textiles &amp; Carpets</em></h2>
+        <p>Carpets, curtains, bedsheets and throws — highlights below. The full Home page has every piece. Large pieces are shop pickup only.</p>
+        <span class="sec-count" id="count-home"></span>
+        <a class="viewall-link" href="#/home">View All →</a>
+      </div>
+      <div class="grid" id="grid-home"></div>
+      <div class="sec-empty" data-empty="home">No home piece matches this filter. Try another search — or wait for the next fresh drop — a new one lands every 3 days.</div>
+      <div class="viewall"><a class="btn btn-forest" href="#/home">View All Home Pieces →</a></div>
+    </div>
+  </section>
+
+  <!-- ============ FRESH DROP (EVERY 3 DAYS) — near the end ============ -->
+  <section class="block" id="drop" style="padding-top:34px">
+    <div class="wrap">
+      <div class="dropband reveal">
+        <div>
+          <div class="caps" style="color:var(--rust)">One Drop Every 3 Days • First Come, First Served</div>
+          <h2>Fresh Drop, <em>Every 3 Days.</em></h2>
+          <p>Every 3 days, a new drop arrives — 10–15 new photographs go up in each section, all at once, not random uploads. What is Available on drop day may be Sold before the next drop lands. Sold pieces stay on the page, marked Sold, so you can see the photos are real.</p>
+          <div style="margin-top:20px"><a class="btn btn-rust" href="#/mens">Browse This Drop's Sections</a></div>
+        </div>
+        <div class="dropclock"><div class="cd" id="cd">--:--:--</div><span>Until the next drop</span><div class="cd-date" id="cdDate"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT — the burgundy atelier band ============ -->
+  <section class="block atelier" style="padding-top:52px;padding-bottom:56px">
+    <div class="wrap">
+      <div class="atelier-grid reveal">
+        <div class="atelier-photo"><img src="assets/ladies-rack.jpg" alt="Ladies' coats on a rack in the shop, a soft pink coat in the middle"></div>
+        <div class="atelier-copy">
+          <div class="caps">Our Atelier</div>
+          <h2>Your Own Gahkuch Shop,<br><em>Now Online.</em></h2>
+          <p>This is not a bulk catalogue. It is the catalogue of One Piece Shop — your own neighbourhood shop in Gahkuch, two shops combined into one — with its own vintage character. Every coat, jacket, hoodie and carpet is exactly one piece. What you see in the photo is what you will find in the shop. Reserve it in time, or someone else takes it tomorrow.</p>
+          <a class="btn btn-creamline" href="#/reserve">How to Reserve →</a>
+        </div>
+        <div class="atelier-side">
+          <div class="fr"><img src="assets/hero-coat.jpg" alt="A beige belted coat worn by a person"></div>
+          <div class="script-note">a story in<br>every stitch</div>
+        </div>
+      </div>
+      <div class="split">
+        <div class="panel reveal">
+          <div class="caps" style="color:var(--rust)">In the Shop Right Now</div>
+          <h3>Winter Stock — The Full List</h3>
+          <ul class="stocklist">
+            <li>Men's coats &amp; jackets</li><li>Men's shirts &amp; hoodies</li><li>Adults' hoodies</li><li>Trousers &amp; tights</li>
+            <li>Ladies' long coats</li><li>Ladies' coats</li><li>Ladies' small hoodies</li><li>Ladies' koti</li>
+            <li>Kids' small coats</li><li>Kids' shirts</li><li>High-necks</li><li>Kids' trousers</li>
+            <li>Kids' frocks</li><li>Vests (baniyan)</li><li>Carpets</li><li>Curtains, bedsheets, throws</li>
+          </ul>
+          <p style="margin-bottom:0">The shop sits near schools and colleges, so kids' and students' pieces sell fastest. Ads promote the whole shop, never a single piece: people arrive from the ad, browse the sections here, then reserve.</p>
+        </div>
+        <div class="panel reveal">
+          <div class="caps" style="color:var(--rust)">Measurements &amp; Condition</div>
+          <h3>A Label Can Lie. A Tape Measure Can't.</h3>
+          <p>Every serious thrift shop lists real flat measurements next to the label size. So does this one:</p>
+          <ul>
+            <li><strong>Coat / Jacket / Hoodie:</strong> Chest (in), Length (in), Shoulder</li>
+            <li><strong>Trousers:</strong> Waist (in), Length / Inseam (in)</li>
+            <li><strong>Condition grade:</strong> Excellent / Good / Fair — any flaw gets its own photo</li>
+            <li><strong>Carpet / Bedsheet:</strong> Size (ft), with a Shop Pickup tag on large pieces</li>
+          </ul>
+          <p style="margin-bottom:0"><strong>On out-of-town delivery, honestly:</strong> couriers take 4–5 days to reach Gilgit and Skardu, and 5–7 days to remote parts of Gilgit-Baltistan, and winter road closures can add delays. So no delivery date is promised — you get a <strong>dispatch date plus a tracking number</strong> instead.</p>
+        </div>
+      </div>
+      <p style="text-align:center;color:#e6d5b8;font-size:.88rem;max-width:72ch;margin:22px auto 0" class="reveal">Note: This first listing is built from the winter stock described by the shop — coats, jackets, hoodies, trousers, ladies' long coats, kids' coats / high-necks / frocks, carpets, curtains and bedsheets. Real photos and prices from each new drop will be updated in this same format. Final availability is always confirmed at the shop: <em>every piece is one of a kind, so we confirm it's still available when you message.</em></p>
+      <p class="reveal" style="text-align:center;margin:32px auto 0"><span class="caps" style="color:var(--brass)">Hand-Picked Landa — Every Piece Only One</span></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" style="padding-top:0">
+    <div class="wrap" style="max-width:820px">
+      <div class="block-head reveal"><div class="caps">Common Questions</div><h2>Everything You Might Ask</h2></div>
+      <details class="reveal"><summary>I like a piece but I live outside Gahkuch. What happens?</summary><p>Pickup comes first. For Gilgit / Yasin, the piece is sent by vehicle or courier after full advance payment. There is no cash-on-delivery for a one-of-one piece sent to another town — if it comes back, the buyer who wanted it that same day is gone too.</p></details>
+      <details class="reveal"><summary>I reserved a piece, but someone else paid first. Then what?</summary><p>First to pay holds the right — the rule is written on this page. If a piece turns out to be sold after your payment, your full amount is refunded.</p></details>
+      <details class="reveal"><summary>What if the size turns out wrong?</summary><p>That is exactly why every piece lists real measurements (chest, length, waist in inches) next to the label size. And with shop pickup, you can hold the piece, try it on, and then decide — the biggest advantage of landa.</p></details>
+      <details class="reveal"><summary>How often does new stock arrive?</summary><p>A new drop lands every 3 days: 10–15 new photographs per category, uploaded as one fixed drop. Ads promote that drop and the whole shop — never a single piece.</p></details>
+    </div>
+  </section>
+
+  <section style="padding:0 0 62px"><div class="wrap"><div class="visit reveal"><div class="caps" style="color:var(--rust)">Visit the Shop</div><h2>Looks Good in the Photo?<br>It Feels Even Better in Hand.</h2><p>Gahkuch, Gilgit-Baltistan — near the schools and colleges, two shops combined into one. Reserve on the site, say your code, take your piece. First come, first served.</p><a class="btn btn-rust" href="#/" style="border-color:var(--rust)">Back to the Sections</a></div></div></section>
+  </div><!-- /view-home -->
+
+  <!-- ============ CATEGORY PAGE VIEW — one full page per category ============ -->
+  <div id="view-page" hidden>
+    <div class="page-hero">
+      <img class="bgimg" id="pageHeroImg" src="assets/mens-jacket.jpg" alt="">
+      <div class="shade"></div>
+      <div class="wrap">
+        <a class="backlink" href="#/">← Back to Home</a>
+        <div class="caps" style="margin-top:26px">One Piece Shop • Gahkuch</div>
+        <h2 id="pageTitle">Mens Fashion</h2>
+        <p id="pageDesc"></p>
+        <span class="page-count" id="pageCount">Every one, only one of one</span>
+        <div class="subcat-label">Browse by type — tap one to filter</div>
+        <nav class="subcat-strip" id="pageNav" aria-label="Sub-categories"></nav>
+      </div>
+    </div>
+    <div class="wrap"><div class="grid" id="pageGrid" style="padding:36px 0 10px"></div><div class="sec-empty" id="pageEmpty" style="margin:0 0 64px"></div><div style="padding-bottom:54px"></div></div>
+  </div>
+
+  <!-- ============ HOW TO RESERVE — its own page ============ -->
+  <div id="view-reserve" hidden>
+    <div class="wrap" style="padding-top:34px"><a class="backlink on-light" href="#/">← Back to Home</a></div>
+    <section class="block" id="reserve" style="padding-top:22px">
+      <div class="wrap">
+        <div class="block-head reveal"><div class="caps">The Reserve System • Rules in Writing</div><h2>How to Reserve</h2><p>Four simple steps and the house rules in writing — adapted for Gahkuch with a half-advance hold, the shop's own plan.</p></div>
+        <div class="steps">
+          <article class="step reveal"><div class="n">1</div><h3>Browse</h3><p>Open a category page and check the photo, price, real measurements (chest / length / waist) and condition grade. Never trust the label size alone — the tape measure is the truth.</p></article>
+          <article class="step reveal"><div class="n">2</div><h3>Reserve or Buy</h3><p>Every piece has two buttons: <strong>Reserve</strong> — free hold, you get a reserve code to show at the shop. <strong>Buy Now</strong> — opens the payment choices: pay the <strong>full price</strong> on WhatsApp and the piece is yours, or pay <strong>half</strong> on WhatsApp and the piece is held 1–2 days in your name, the rest on pickup.</p></article>
+          <article class="step reveal"><div class="n">3</div><h3>Hold Time</h3><p><strong>Gahkuch locals:</strong> free hold until the shop closes today, pickup tomorrow. <strong>Need 1–2 days?</strong> A half advance on WhatsApp is required.</p></article>
+          <article class="step reveal"><div class="n">4</div><h3>Pickup / Delivery</h3><p>Shop pickup is the default. For Gilgit / Yasin, pieces are sent by vehicle or courier only against <strong>full advance</strong>, with tracking.</p></article>
+        </div>
+        <div class="rules reveal">
+          <h3>The House Rules — So There Is Never an Argument</h3>
+          <ul>
+            <li><strong>First to pay wins.</strong> Looking at a piece or asking about it does not reserve it.</li>
+            <li><strong>The half advance is non-refundable</strong> if a 1–2 day hold expires without pickup — this is stated clearly before any money is taken.</li>
+            <li><strong>A screenshot does not reserve a piece.</strong> A long hold is confirmed only when the JazzCash / EasyPaisa amount is visible in the shop's own account, and you receive the code plus the expiry time in writing.</li>
+            <li><strong>Time up = back on sale.</strong> An unpaid reservation expires on its own.</li>
+            <li><strong>If a piece sells out after your payment,</strong> the full amount is refunded.</li>
+            <li><strong>Large home pieces (carpets and similar) are Local Pickup only.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- ============ PRODUCT DETAIL PAGE — one full page per piece ============ -->
+  <div id="view-detail" hidden>
+    <div class="wrap" style="padding-top:30px">
+      <button class="backlink on-light" id="dBack" type="button">← Back</button>
+      <div class="detail-grid" style="margin-top:22px">
+        <div class="detail-img"><img id="dImg" src="assets/hero-male-vintage.webp" alt="Photo of the piece"></div>
+        <div class="detail-info">
+          <div class="caps" id="dCat" style="color:var(--rust)"></div>
+          <h2 id="dName"></h2>
+          <p id="dDesc" style="color:var(--muted);margin:0"></p>
+          <div class="specs" id="dSpecs" style="margin-top:16px"></div>
+          <div class="price-row"><span class="price" id="dPrice"></span><span class="one">Only 1 Piece • No Restock</span></div>
+          <p id="dStatus" style="font-weight:600;margin:10px 0 0"></p>
+          <button class="btn btn-rust" id="dReserve" style="width:100%;margin-top:14px;padding:13px 18px">Reserve — Get My Code</button>
+          <div class="m-wa">
+            <button class="b-buynow" id="dBuyNow" type="button">Buy Now</button>
+          </div>
+          <div class="codebox" id="dCodeBox"><div class="caps" style="color:var(--rust)">Your Reserve Code</div><strong id="dCodeText"></strong><p style="margin:6px 0 0;font-size:.9rem">Show this code at the shop. For Gahkuch locals, this piece is held for you <strong>until the shop closes today</strong>. To keep it 1–2 days, a half advance is required — otherwise the piece returns to sale when the time expires.</p></div>
+          <p style="color:var(--muted);font-size:.86rem;margin-top:14px">A long hold is confirmed only when the payment is visible in the shop's account — not on a screenshot. If the piece has already sold, your payment is refunded in full.</p>
+        </div>
+      </div>
+
+      <!-- FEEDBACK / REVIEWS — starts empty; a visitor's own review is
+           saved in their browser and shown in the list below. -->
+      <div class="reviews-sec">
+        <div class="caps" style="color:var(--rust)">Feedback</div>
+        <h3 class="rev-h">Reviews &amp; Comments</h3>
+        <div class="rev-avg"><span class="stars" id="dAvgStars" aria-hidden="true"></span><span id="dAvgText">No reviews yet</span></div>
+        <div id="dReviews"></div>
+        <p class="rev-empty" id="dRevEmpty">Be the first to share your feedback on this piece.</p>
+        <form class="rev-form" id="dRevForm">
+          <div>
+            <div class="rev-label">Your Rating</div>
+            <div class="star-input" id="dStarInput" role="radiogroup" aria-label="Choose a star rating">
+              <button type="button" data-star="1" aria-label="1 star">★</button>
+              <button type="button" data-star="2" aria-label="2 stars">★</button>
+              <button type="button" data-star="3" aria-label="3 stars">★</button>
+              <button type="button" data-star="4" aria-label="4 stars">★</button>
+              <button type="button" data-star="5" aria-label="5 stars">★</button>
+            </div>
+          </div>
+          <input id="dRevName" type="text" placeholder="Your name" maxlength="60" aria-label="Your name">
+          <textarea id="dRevText" rows="3" placeholder="Write your comment — the piece, the size, the quality, your experience…" maxlength="600" aria-label="Your comment"></textarea>
+          <div><button class="btn btn-forest" type="submit" style="padding:12px 22px">Post Feedback</button></div>
+        </form>
+      </div>
+
+      <!-- RELATED PIECES — same sub-category first, then same category -->
+      <div class="related-sec">
+        <div class="sec-title" style="margin-bottom:24px">
+          <div class="caps">Keep Looking</div>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem)">You May Also Like</h2>
+        </div>
+        <div class="grid" id="dRelated"></div>
+        <div class="sec-empty" id="dRelatedEmpty">No other pieces in this section right now — fresh stock is photographed and added with every drop, every 3 days.</div>
+      </div>
+      <div style="padding-bottom:60px"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ===== FOOTER — burgundy band ===== -->
+<footer>
+  <div class="wrap">
+    <div class="caps f-caps">One Piece Shop — Gahkuch, Gilgit-Baltistan</div>
+    <div class="f-title">Become Part of the Story</div>
+    <p>Hand-picked vintage &amp; thrift — every piece only one, first come, first served. Reserve on the site, say your code at the shop, take your piece home.</p>
+    <nav class="f-links" aria-label="Footer categories">
+      <a href="#/mens">Mens</a><a href="#/womens">Womens</a><a href="#/kids">Kids</a><a href="#/home">Home</a><a href="#/reserve">How to Reserve</a>
+    </nav>
+    <div class="f-base">One Piece Shop · Gahkuch, Gilgit-Baltistan · Every piece only one — no restock, ever.</div>
+  </div>
+</footer>
+
+<!-- BUY PANEL — opened by the single "Buy Now" button on every card
+     and in the detail modal. Shows the two payment choices, each
+     explained, each with its own WhatsApp button (via WA_NUMBER). -->
+<div class="overlay" id="buyOverlay" role="dialog" aria-modal="true" aria-label="Buy this piece">
+  <div class="modal" style="max-width:540px">
+    <div class="mbody">
+      <button class="close" id="buyClose" aria-label="Close">✕</button>
+      <div class="caps" style="color:var(--rust)">Buy Now — Choose How to Pay</div>
+      <h3 id="buyName" style="font-size:1.55rem"></h3>
+      <p id="buyMeta" style="color:var(--muted);margin:0"></p>
+      <div class="buy-choice">
+        <h4>Buy Now — Full Payment</h4>
+        <div class="buy-amt" id="buyFullAmt"></div>
+        <p>Pay the full price now on WhatsApp and the piece is yours — no one else can take it. Pick it up from the shop, or get it delivered as per the shop's delivery rule (out-of-town pieces are sent after full advance, with tracking).</p>
+        <button class="b-wa" id="buyFull" type="button">Pay Full on WhatsApp</button>
+      </div>
+      <div class="buy-choice">
+        <h4>Buy Now — Half Payment</h4>
+        <div class="buy-amt" id="buyHalfAmt"></div>
+        <p>Pay half now on WhatsApp and the piece is held in your name for 1–2 days. Pay the remaining half when you pick it up from the shop. If the hold time passes without pickup, the piece returns to sale.</p>
+        <button class="b-wa" id="buyHalf" type="button">Pay Half on WhatsApp</button>
+      </div>
+      <p style="color:var(--muted);font-size:.86rem;margin-top:14px">Payment is confirmed only when it is visible in the shop's account — a screenshot alone does not hold a piece. If the piece has already sold, your payment is refunded in full.</p>
+    </div>
+  </div>
+</div>
+<!-- WHATSAPP MESSAGE SHEET — shown while the shop's WhatsApp number
+     is not added yet: the ready-to-send order message with a Copy
+     button, instead of a dead link. Once WA_NUMBER is set in the
+     script, every WhatsApp button opens wa.me directly. -->
+<div class="overlay" id="waOverlay" role="dialog" aria-modal="true" aria-label="WhatsApp message">
+  <div class="modal" style="max-width:520px">
+    <div class="mbody">
+      <button class="close" id="waClose" aria-label="Close">✕</button>
+      <div class="caps" style="color:var(--rust)">WhatsApp — Your Message Is Ready</div>
+      <h3 style="font-size:1.5rem">Copy &amp; Send on WhatsApp</h3>
+      <p style="color:var(--muted);margin:0">The shop's WhatsApp number is being added to the site. For now, copy this ready-written message and send it to the shop on WhatsApp:</p>
+      <div class="wa-sheet-msg" id="waMsg"></div>
+      <button class="btn btn-forest" id="waCopy" style="width:100%;margin-top:14px;padding:13px 18px">Copy Message</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<button class="wa-float" type="button" data-wa-general aria-label="Chat with the shop on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.19.35-.58.35-1.08.25-1.19-.1-.1-.23-.16-.48-.28z"/></svg></button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  /* ================================================================
+     WHATSAPP NUMBER — the shop's WhatsApp number goes here, ONE
+     place only (international format, digits only, e.g. "923001234567").
+     It is EMPTY for now: while empty, every WhatsApp button shows the
+     ready-written order message in a sheet with a Copy button instead
+     of opening a dead link. Fill this in and all buttons go live.
+     ================================================================ */
+  var WA_NUMBER = "";
+  var WA_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.19.35-.58.35-1.08.25-1.19-.1-.1-.23-.16-.48-.28z"/></svg>';
+  function waMessage(p,kind){
+    if(!p) return "Assalam-o-Alaikum! I am browsing One Piece Shop, Gahkuch, and I want to ask about a piece I saw on the website.";
+    var head = kind==="full"
+      ? "Assalam-o-Alaikum! I want to BUY NOW (Full Payment) this piece from One Piece Shop:"
+      : "Assalam-o-Alaikum! I want to reserve this piece from One Piece Shop with HALF PAYMENT (hold 1–2 days):";
+    var lines = [head,
+      "• Piece: "+p.name+" ("+p.id+")",
+      "• Price: "+money(p.price),
+      "• Size: "+p.size+" — "+p.measure];
+    if(kind==="half") lines.push("• Half advance: "+money(Math.ceil(p.price/2)));
+    lines.push("Please confirm it is still available and share the payment details. Thank you!");
+    return lines.join("\n");
+  }
+  function waOpen(p,kind){
+    var msg = waMessage(p,kind);
+    if(WA_NUMBER){
+      window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+    } else {
+      document.getElementById("waMsg").textContent = msg;
+      document.getElementById("waOverlay").classList.add("open");
+      document.body.style.overflow="hidden";
+    }
+  }
+  var PRODUCTS=[
+    {id:"M-101",cat:"mens",name:"Men's Puffer Jacket — Black",desc:"Warm, heavy puffer in excellent condition for deep winter. Zip and buttons both work perfectly.",price:1450,size:"L",measure:"Chest 44 in • Length 28 in",cond:"Excellent",status:"Available",img:"assets/model-mens-puffer.webp",pos:"50% 12%",alt:"Male model with long wolf-cut hair wearing the black puffer jacket, full outfit, straight front view"},
+    {id:"M-102",cat:"mens",name:"Men's Hoodie — Black",desc:"Soft fleece hoodie with a kangaroo pocket. A clean, everyday piece.",price:850,size:"M",measure:"Chest 42 in • Length 27 in",cond:"Excellent",status:"Available",img:"assets/model-mens-hoodie.webp",pos:"50% 12%",alt:"Male model with long wolf-cut hair wearing the black hoodie, full outfit, straight front view"},
+    {id:"M-103",cat:"mens",name:"Men's Trousers — Mixed Colours",desc:"Khaki, navy and grey — whoever reserves their size first gets that colour. Every pair is different.",price:650,size:"32",measure:"Waist 32 in • Length 40 in",cond:"Good",status:"Reserved",img:"assets/model-mens-trousers.webp",pos:"50% 12%",alt:"Male model with long wolf-cut hair wearing khaki trousers with a matching top, full outfit, straight front view"},
+    {id:"W-201",cat:"womens",name:"Ladies' Long Coat — Camel",desc:"A long, graceful camel coat with a belt. The standout ladies' piece of this season.",price:1850,size:"M",measure:"Chest 38 in • Length 42 in",cond:"Excellent",status:"Available",img:"assets/model-womens-camel-coat.webp",pos:"50% 12%",alt:"Female model in hijab wearing the long camel belted coat, full outfit, straight front view"},
+    {id:"W-202",cat:"womens",name:"Ladies' Long Coat — Black",desc:"Black long coat with a high neck. Clean condition, no marks.",price:1650,size:"M–L",measure:"Chest 40 in • Length 40 in",cond:"Good",status:"Available",img:"assets/model-womens-black-coat.webp",pos:"50% 12%",alt:"Female model in hijab wearing the long black coat, full outfit, straight front view"},
+    {id:"W-203",cat:"womens",name:"Ladies' Coat — Soft Pink",desc:"A soft pink coat hanging mid-rack — soft, clean and elegant. Only one piece.",price:1400,size:"M",measure:"Chest 38 in • Length 38 in",cond:"Excellent",status:"Available",img:"assets/model-womens-pink-coat.webp",pos:"50% 12%",alt:"Female model in hijab wearing the soft pink coat, full outfit, straight front view"},
+    {id:"K-301",cat:"kids",name:"Kids' Puffer Coat — Navy",desc:"Warm kids' coat — pair it with a scarf and the full winter set is done. Perfect for school.",price:950,size:"8–10 yrs",measure:"Chest 30 in • Length 22 in",cond:"Excellent",status:"Available",img:"assets/model-kids-navy-coat.webp",pos:"50% 12%",alt:"Boy model wearing the navy puffer coat with scarf and boots, full outfit, straight front view"},
+    {id:"K-302",cat:"kids",name:"Kids' Coat — Maroon",desc:"Maroon puffer with a hood. Only one piece — if the size matches, reserve it right away.",price:900,size:"8–10 yrs",measure:"Chest 30 in • Length 22 in",cond:"Good",status:"Sold",img:"assets/model-kids-maroon-coat.webp",pos:"50% 12%",alt:"Girl model wearing the maroon hooded puffer coat, full outfit, straight front view"},
+    {id:"K-303",cat:"kids",name:"Girl's Frock — Blue Bow",desc:"Light blue knitted bodice with a cream skirt and bow detail. A sweet winter frock — only one piece.",price:700,size:"3–4 yrs",measure:"Chest 22 in • Length 20 in",cond:"Excellent",status:"Available",img:"assets/model-kids-frock.webp",pos:"50% 12%",alt:"Little girl model wearing the blue knitted frock with cream skirt and bow, full outfit, straight front view"},
+    {id:"H-401",cat:"home",name:"Carpet — Traditional Design",desc:"A heavy, sturdy carpet. Colours and design exactly as photographed. Large piece — shop pickup only.",price:2800,size:"5 × 8 ft",measure:"Size 5 × 8 ft",cond:"Good",status:"Available",img:"assets/carpets.jpg",alt:"Folded carpets with traditional designs",pickup:true},
+    {id:"H-402",cat:"home",name:"Bedsheet Set — Mixed Designs",desc:"Clean folded bedsheets in assorted light colours. The first set reserved is the set you get.",price:750,size:"Double",measure:"Double bed size",cond:"Excellent",status:"Available",img:"assets/home-linen.jpg",pos:"18% center",alt:"Stacks of folded bedsheets in front of white curtains"},
+    {id:"H-403",cat:"home",name:"Curtains — Sheer White Pair",desc:"Light white sheer curtains that let the daylight through. A soft, clean set for the home.",price:1100,size:"Pair",measure:"Pair • Length confirmed at the shop",cond:"Good",status:"Available",img:"assets/home-linen.jpg",pos:"82% center",alt:"White sheer curtains with folded linen",pickup:true}
+  ];
+  /* Sub-category of every piece — drives the filter strip on each
+     category page. Sub-categories with no piece yet still appear as
+     tiles and show an "arriving soon" empty state when tapped. */
+  var SUBMAP={"M-101":"Jackets","M-102":"Hoodies","M-103":"Trousers","W-201":"Long Coats","W-202":"Long Coats","W-203":"Coats","K-301":"Coats","K-302":"Coats","K-303":"Frocks","H-401":"Carpets (Qaleen)","H-402":"Bedsheets","H-403":"Curtains (Parday)"};
+  PRODUCTS.forEach(function(p){ p.sub=SUBMAP[p.id]||""; });
+  var SUBCATS={
+    mens:["Coats","Jackets","Trousers","Hoodies","Sweaters","Shirts","Baniyan","High-Necks"],
+    womens:["Coats","Long Coats","Koti","Baniyan","Hoodies","Shirts","Trousers","Tights"],
+    kids:["Coats","Shirts","Hoodies","Trousers","Frocks","High-Necks","Sweaters"],
+    home:["Carpets (Qaleen)","Curtains (Parday)","Bedsheets","Chadars","Gaddi (Mattresses/Cushions)"]
+  };
+  var activeSub="All";
+  var CATS=["mens","womens","kids","home"];
+  var CATNAMES={mens:"Mens",womens:"Womens",kids:"Kids — Boys & Girls",home:"Home Items"};
+  var state={q:"",status:"all",sort:"fresh"};
+  var reserved={};
+  function money(n){return "Rs "+n.toLocaleString("en-PK");}
+  function statusClass(s){return s==="Available"?"av":(s==="Reserved"?"rs":"so");}
+  function statusText(p){ if(reserved[p.id]) return "Reserved — Your Code"; return p.status==="Available"?"Available":(p.status==="Reserved"?"Reserved — Held for Someone":"Sold — Gone"); }
+  function effStatus(p){ return reserved[p.id]?"Reserved":p.status; }
+  function cardHTML(p){
+    var st=effStatus(p);
+    return '<article class="card"><div class="img" data-detail="'+p.id+'" role="button" tabindex="0" aria-label="View details of '+p.name+'"><img src="'+p.img+'" alt="'+p.alt+'"'+(p.pos?' style="object-position:'+p.pos+'"':"")+'><span class="status '+statusClass(st)+'">'+statusText(p)+'</span>'+(p.pickup?'<span class="pickup-only">Shop Pickup Only</span>':"")+'</div><div class="body"><span class="catlabel">'+CATNAMES[p.cat]+' • '+p.id+'</span><h3>'+p.name+'</h3><p class="desc">'+p.desc+'</p><div class="specs"><div><b>Size</b>'+p.size+'</div><div><b>Condition</b>'+p.cond+'</div><div style="grid-column:1/-1"><b>Real Measurements</b>'+p.measure+'</div></div><div class="price-row"><span class="price">'+money(p.price)+' <small>/ piece</small></span><span class="one">1 of 1</span></div><div class="actions"><button class="b-detail" data-detail="'+p.id+'">Details</button><button class="b-reserve" data-reserve="'+p.id+'" '+(st!=="Available"?"disabled":"")+'>'+(st==="Available"?"Reserve":"Not Available")+'</button></div><div class="wa-actions"><button class="b-buynow" data-buynow="'+p.id+'" '+(st!=="Available"?"disabled":"")+'>Buy Now</button></div></div></article>';
+  }
+  /* Signature Pieces — the Belle Archive product row on the home page:
+     square cream cards, photo on cream, name + price underneath. */
+  function sigHTML(p){
+    return '<article class="sig-card" data-detail="'+p.id+'" tabindex="0" role="button" aria-label="View '+p.name+'"><div class="sig-img"><img draggable="false" src="'+p.img+'" alt="'+p.alt+'"'+(p.pos?' style="object-position:'+p.pos+'"':"")+'></div><h3>'+p.name+'</h3><div class="sig-price">'+money(p.price)+'</div><div class="sig-status">'+statusText(p)+'</div></article>';
+  }
+  function renderSig(){
+    var el=document.getElementById("sigGrid"); if(!el) return;
+    /* The carousel runs through every piece in the shop — all 12,
+       across all four categories — not a short static row. */
+    el.innerHTML=PRODUCTS.map(sigHTML).join("");
+  }
+  /* Carousel: arrows slide one card at a time; auto-slide advances
+     gently and loops back to the start; swipe is native on touch.
+     Pauses while the reader is touching / hovering it. */
+  var sigTapId=null, sigTapAt=0;
+  (function(){
+    var vp=document.getElementById("sigViewport"); if(!vp) return;
+    var reducedQ=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function step(){
+      var card=vp.querySelector(".sig-card");
+      return card?card.getBoundingClientRect().width+16:234;
+    }
+    function slide(dir){
+      var max=vp.scrollWidth-vp.clientWidth;
+      var next=vp.scrollLeft+dir*step();
+      if(next>max+4){ vp.scrollTo({left:0,behavior:"smooth"}); return; }
+      if(next<0){ vp.scrollTo({left:max,behavior:"smooth"}); return; }
+      vp.scrollTo({left:next,behavior:"smooth"});
+    }
+    var prev=document.getElementById("sigPrev"), nextB=document.getElementById("sigNext");
+    if(prev) prev.addEventListener("click",function(){ slide(-1); });
+    if(nextB) nextB.addEventListener("click",function(){ slide(1); });
+    if(reducedQ) return;
+    var paused=false;
+    ["pointerdown","pointerenter","touchstart"].forEach(function(ev){ vp.addEventListener(ev,function(){ paused=true; },{passive:true}); });
+    ["pointerleave","touchend"].forEach(function(ev){ vp.addEventListener(ev,function(){ paused=false; },{passive:true}); });
+    setInterval(function(){ if(!paused&&viewName==="home") slide(1); },3600);
+    /* Tap-to-open on the cards. Inside this horizontally scrolling
+       track a press often never becomes a "click": on touch the
+       browser treats the press as the start of a swipe and cancels
+       the click, and on desktop the auto-slide (or an image drag)
+       can move / replace the target between press and release, so
+       the click lands on the track and nothing opens. So remember
+       which card the press STARTED on, and when the release comes
+       quickly with barely any movement, open that piece's detail
+       page from here. The document click handler ignores the
+       follow-up click of the same tap (sigTapId / sigTapAt). */
+    var pressCard=null, pressX=0, pressY=0;
+    vp.addEventListener("pointerdown",function(e){
+      pressCard=e.target&&e.target.closest?e.target.closest(".sig-card"):null;
+      pressX=e.clientX; pressY=e.clientY;
+    });
+    vp.addEventListener("pointercancel",function(){ pressCard=null; });
+    vp.addEventListener("pointerup",function(e){
+      if(!pressCard) return;
+      var dx=e.clientX-pressX, dy=e.clientY-pressY;
+      var id=pressCard.getAttribute("data-detail");
+      pressCard=null;
+      if(!id) return;
+      if(dx*dx+dy*dy>100) return; /* a swipe, not a tap */
+      sigTapId=id; sigTapAt=Date.now();
+      openDetail(id,false);
+    });
+  })();
+  var HIGHLIGHTS=3, activeCat=null;
+  var CATMETA={
+    mens:{title:'Mens <em>Fashion</em>',desc:"Coats, jackets, hoodies, shirts, trousers and tights — the complete men's winter stock, photographed piece by piece. Every piece is one of one: when it's gone, it's gone.",img:"assets/model-mens-puffer.webp",alt:"Mens fashion — male model with long wolf-cut hair in a black puffer jacket"},
+    womens:{title:'Womens <em>Fashion</em>',desc:"Long coats, coats, koti, small hoodies and tights — every ladies' piece hand-picked for the cold season, and every one of them only one piece.",img:"assets/model-womens-camel-coat.webp",alt:"Womens fashion — model in hijab wearing a long camel coat"},
+    kids:{title:'Kids <em>Fashion</em>',desc:"Small coats, shirts, high-necks, trousers, frocks, koti and vests for boys and girls — the school-season pieces that sell out first. Only one of each.",img:"assets/model-kids-navy-coat.webp",alt:"Kids fashion — boy model in a navy puffer coat"},
+    home:{title:'Home <em>Collection</em>',desc:"Carpets, curtains, bedsheets and throws for the home. Large pieces are shop pickup only — see them in person before you decide.",img:"assets/carpets.jpg",alt:"Home collection — traditional carpets"}
+  };
+  function filtered(cat){
+    var list=PRODUCTS.filter(function(p){
+      if(p.cat!==cat) return false;
+      if(state.status!=="all"&&effStatus(p)!==state.status) return false;
+      if(state.q){ var hay=(p.name+" "+p.desc+" "+CATNAMES[p.cat]).toLowerCase(); if(hay.indexOf(state.q.toLowerCase())===-1) return false; }
+      return true;
+    });
+    if(state.sort==="low") list=list.slice().sort(function(a,b){return a.price-b.price});
+    if(state.sort==="high") list=list.slice().sort(function(a,b){return b.price-a.price});
+    return list;
+  }
+  function render(){
+    CATS.forEach(function(cat){
+      var list=filtered(cat);
+      var shown=list.slice(0,HIGHLIGHTS);
+      var grid=document.getElementById("grid-"+cat);
+      grid.innerHTML=shown.map(cardHTML).join("");
+      document.querySelector('[data-empty="'+cat+'"]').style.display=list.length?"none":"block";
+      var total=PRODUCTS.filter(function(p){return p.cat===cat}).length;
+      document.getElementById("count-"+cat).textContent=shown.length+" highlights of "+total+" pieces";
+    });
+    renderSig();
+    if(activeCat) renderCategoryPage(activeCat);
+    if(window.ScrollTrigger){ ScrollTrigger.refresh(); }
+  }
+  function renderSubcats(cat){
+    var subs=["All"].concat(SUBCATS[cat]||[]);
+    document.getElementById("pageNav").innerHTML=subs.map(function(s){
+      return '<button type="button" data-sub="'+s+'"'+(s===activeSub?' class="here"':"")+">"+(s==="All"?"All "+CATNAMES[cat].split(" — ")[0]:s)+"</button>";
+    }).join("");
+  }
+  function renderCategoryPage(cat){
+    var all=PRODUCTS.filter(function(p){return p.cat===cat});
+    var list=activeSub==="All"?all:all.filter(function(p){return p.sub===activeSub});
+    document.getElementById("pageGrid").innerHTML=list.map(cardHTML).join("");
+    document.getElementById("pageCount").textContent="Every one, only one of one";
+    var empty=document.getElementById("pageEmpty");
+    if(list.length){ empty.style.display="none"; }
+    else{
+      empty.textContent="New "+activeSub+" pieces are arriving soon — fresh stock is photographed and added with every drop, every 3 days. Check back at the next drop, or tap \u201CAll\u201D above to see everything in this section right now.";
+      empty.style.display="block";
+    }
+    renderSubcats(cat);
+  }
+  function openCategory(cat){
+    activeCat=cat; activeSub="All";
+    var m=CATMETA[cat];
+    document.getElementById("pageTitle").innerHTML=m.title;
+    document.getElementById("pageDesc").textContent=m.desc;
+    var img=document.getElementById("pageHeroImg"); img.src=m.img; img.alt=m.alt;
+    renderCategoryPage(cat);
+    showView("page");
+  }
+  /* Sub-category chips — tap to filter the pieces below; tap "All"
+     (or the active chip again) to show the whole category again. */
+  document.addEventListener("click",function(e){
+    var b=e.target&&e.target.closest?e.target.closest("[data-sub]"):null;
+    if(!b||!activeCat) return;
+    var s=b.getAttribute("data-sub");
+    activeSub=(s===activeSub)?"All":s;
+    renderCategoryPage(activeCat);
+  });
+  document.addEventListener("click",function(e){
+    var t=e.target&&e.target.closest?e.target.closest("[data-detail],[data-reserve]"):null;
+    if(!t) return;
+    /* A Signature carousel tap already handled on pointerup (see the
+       carousel code) must not open the same detail page twice. */
+    if(sigTapId&&t.getAttribute("data-detail")===sigTapId&&Date.now()-sigTapAt<800){ sigTapId=null; return; }
+    if(t.hasAttribute("data-detail")) openDetail(t.getAttribute("data-detail"),false);
+    else openDetail(t.getAttribute("data-reserve"),true);
+  });
+  /* General WhatsApp buttons — header icon and floating button.
+     All go through WA_NUMBER above. */
+  document.addEventListener("click",function(e){
+    var g=e.target&&e.target.closest?e.target.closest("[data-wa-general]"):null;
+    if(g) waOpen(null,"general");
+  });
+  /* ===== Buy panel — one "Buy Now" button per product opens it =====
+     The panel explains the two choices (full payment / half payment)
+     and each choice carries its own WhatsApp button. */
+  var buyOverlay=document.getElementById("buyOverlay"), buyPiece=null;
+  document.getElementById("buyFull").innerHTML=WA_SVG+"Pay Full on WhatsApp";
+  document.getElementById("buyHalf").innerHTML=WA_SVG+"Pay Half on WhatsApp";
+  function openBuyPanel(p){
+    if(!p||effStatus(p)!=="Available") return;
+    buyPiece=p;
+    document.getElementById("buyName").textContent=p.name;
+    document.getElementById("buyMeta").textContent=CATNAMES[p.cat]+" • Piece "+p.id+" • Size "+p.size+" • "+p.cond+" condition — only 1 piece, no restock.";
+    document.getElementById("buyFullAmt").textContent="Pay now: "+money(p.price)+" (full price)";
+    document.getElementById("buyHalfAmt").textContent="Pay now: "+money(Math.ceil(p.price/2))+" — remaining "+money(p.price-Math.ceil(p.price/2))+" on pickup";
+    buyOverlay.classList.add("open");
+    document.body.style.overflow="hidden";
+  }
+  function closeBuyPanel(){
+    buyOverlay.classList.remove("open");
+    if(!waOverlay.classList.contains("open")) document.body.style.overflow="";
+  }
+  document.getElementById("buyClose").addEventListener("click",closeBuyPanel);
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeBuyPanel(); });
+  buyOverlay.addEventListener("click",function(e){ if(e.target===buyOverlay) closeBuyPanel(); });
+  document.getElementById("buyFull").addEventListener("click",function(){ if(buyPiece) waOpen(buyPiece,"full"); });
+  document.getElementById("buyHalf").addEventListener("click",function(){ if(buyPiece) waOpen(buyPiece,"half"); });
+  document.addEventListener("click",function(e){
+    var b=e.target&&e.target.closest?e.target.closest("[data-buynow]"):null;
+    if(b&&!b.disabled){
+      var p=PRODUCTS.filter(function(x){return x.id===b.getAttribute("data-buynow")})[0];
+      if(p) openBuyPanel(p);
+    }
+  });
+  /* WhatsApp message sheet — close + copy */
+  var waOverlay=document.getElementById("waOverlay");
+  function closeWaSheet(){ waOverlay.classList.remove("open"); if(!buyOverlay.classList.contains("open")) document.body.style.overflow=""; }
+  document.getElementById("waClose").addEventListener("click",closeWaSheet);
+  waOverlay.addEventListener("click",function(e){ if(e.target===waOverlay) closeWaSheet(); });
+  document.getElementById("waCopy").addEventListener("click",function(){
+    var txt=document.getElementById("waMsg").textContent;
+    function done(){ showToast("Message copied — paste it into WhatsApp."); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done,function(){ fallbackCopy(txt); done(); }); }
+    else { fallbackCopy(txt); done(); }
+  });
+  function fallbackCopy(txt){
+    var ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.addEventListener("keydown",function(e){
+    if((e.key==="Enter"||e.key===" ")&&e.target&&e.target.hasAttribute&&e.target.hasAttribute("data-detail")){ e.preventDefault(); openDetail(e.target.getAttribute("data-detail"),false); }
+  });
+  document.getElementById("search").addEventListener("input",function(){state.q=this.value;render()});
+  document.getElementById("statusFilter").addEventListener("change",function(){state.status=this.value;render()});
+  document.getElementById("sort").addEventListener("change",function(){state.sort=this.value;render()});
+  render();
+
+  /* ===== Product detail page =====
+     A full page view per piece: big photo, every detail, the Reserve
+     and Buy Now order options, a feedback / reviews section, and
+     related pieces below. Opening a detail remembers exactly where
+     the reader came from (view + scroll position); Back returns to
+     that exact spot — including detail → related detail → Back. */
+  var detailStack=[], currentDetail=null, revRating=0;
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function starsStr(n){ var s=""; for(var i=1;i<=5;i++) s+=(i<=n?"\u2605":"\u2606"); return s; }
+  function fmtDate(ts){ try{ return new Date(ts).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }catch(e){ return ""; } }
+  function findPiece(id){ return PRODUCTS.filter(function(p){return p.id===id})[0]; }
+  function openDetail(id,autoReserve){
+    var p=findPiece(id); if(!p) return;
+    if(viewName==="detail"&&currentDetail&&currentDetail.id!==id){
+      detailStack.push({type:"detail",id:currentDetail.id,scrollY:window.scrollY});
+    } else if(viewName!=="detail"){
+      detailStack.push({type:"view",view:viewName,scrollY:window.scrollY,cat:activeCat,sub:activeSub});
+    }
+    currentDetail=p;
+    fillDetail(p);
+    showView("detail");
+    jumpTopHard();
+    if(autoReserve&&effStatus(p)==="Available"){
+      doDetailReserve();
+      setTimeout(function(){ var cb=document.getElementById("dCodeBox"); if(cb&&reserved[p.id]){ try{ cb.scrollIntoView({block:"center",behavior:"smooth"}); }catch(e){ cb.scrollIntoView(); } } },500);
+    }
+  }
+  function fillDetail(p){
+    var img=document.getElementById("dImg"); img.src=p.img; img.alt=p.alt; img.style.objectPosition=p.pos||"center";
+    document.getElementById("dCat").textContent=CATNAMES[p.cat]+(p.sub?" \u2022 "+p.sub:"")+" \u2022 Piece "+p.id+" \u2022 Only 1 Piece";
+    document.getElementById("dName").textContent=p.name;
+    document.getElementById("dDesc").textContent=p.desc;
+    document.getElementById("dSpecs").innerHTML='<div><b>Size</b>'+p.size+'</div><div><b>Condition</b>'+p.cond+'</div><div style="grid-column:1/-1"><b>Real Measurements</b>'+p.measure+'</div>'+(p.pickup?'<div style="grid-column:1/-1"><b>Delivery</b>Shop Pickup Only \u2014 Gahkuch</div>':"");
+    document.getElementById("dPrice").innerHTML=money(p.price)+' <small style="font-size:.8rem;color:#7d7261">/ piece</small>';
+    var st=effStatus(p);
+    document.getElementById("dStatus").textContent="Status: "+statusText(p)+(st==="Sold"?" \u2014 This piece has sold; it stays on the page as proof the photos are real.":"");
+    var btn=document.getElementById("dReserve"), cb=document.getElementById("dCodeBox");
+    if(reserved[p.id]){ cb.style.display="block"; document.getElementById("dCodeText").textContent=reserved[p.id]; }
+    else cb.style.display="none";
+    btn.disabled=st!=="Available";
+    btn.textContent=st==="Available"?"Reserve \u2014 Get My Code":(reserved[p.id]?"Reserved \u2014 Code Issued":"This Piece Is Not Available");
+    document.getElementById("dBuyNow").disabled=st!=="Available";
+    revRating=0; paintStarInput();
+    document.getElementById("dRevName").value=""; document.getElementById("dRevText").value="";
+    renderReviews(p);
+    renderRelated(p);
+  }
+  function doDetailReserve(){
+    var p=currentDetail; if(!p||effStatus(p)!=="Available") return;
+    var code="GAH-"+p.id+"-"+Math.floor(100+Math.random()*900);
+    reserved[p.id]=code;
+    document.getElementById("dCodeText").textContent=code;
+    document.getElementById("dCodeBox").style.display="block";
+    var btn=document.getElementById("dReserve"); btn.disabled=true; btn.textContent="Reserved \u2014 Code Issued";
+    document.getElementById("dStatus").textContent="Status: Reserved \u2014 in your name, until the shop closes today.";
+    showToast("Reserved: "+p.name+" \u2022 Code "+code);
+    render();
+  }
+  document.getElementById("dReserve").addEventListener("click",doDetailReserve);
+  document.getElementById("dBuyNow").addEventListener("click",function(){ if(currentDetail) openBuyPanel(currentDetail); });
+  /* Back from a detail page — returns to the exact spot the reader
+     came from: the same listing view at the same scroll position, or
+     the previous detail page (from a related piece) at its scroll. */
+  function restoreScrollY(y){
+    function attempt(){ scrollToY(y); }
+    attempt();
+    requestAnimationFrame(attempt);
+    setTimeout(attempt,90);
+    setTimeout(attempt,380);
+  }
+  document.getElementById("dBack").addEventListener("click",function(){
+    var prev=detailStack.pop();
+    if(!prev){ go(""); return; }
+    if(prev.type==="detail"){
+      var p=findPiece(prev.id);
+      if(!p){ go(""); return; }
+      currentDetail=p; fillDetail(p); showView("detail"); restoreScrollY(prev.scrollY||0);
+    } else {
+      currentDetail=null;
+      if(prev.view==="page"&&prev.cat){ activeCat=prev.cat; activeSub=prev.sub||"All"; renderCategoryPage(prev.cat); showView("page"); }
+      else if(prev.view==="reserve"){ showView("reserve"); }
+      else { showView("home"); }
+      restoreScrollY(prev.scrollY||0);
+    }
+  });
+  /* ===== Reviews — saved in the visitor's own browser =====
+     The list starts EMPTY for every piece ("Be the first to share
+     your feedback", "No reviews yet"). A review a visitor posts is
+     stored in their browser (local storage) and shown in the list;
+     the average is computed only from real posted reviews. */
+  var REVKEY="ops_reviews_v1";
+  function loadReviews(){ try{ var v=JSON.parse(localStorage.getItem(REVKEY)||"{}"); return (v&&typeof v==="object")?v:{}; }catch(e){ return {}; } }
+  function saveReviews(all){ try{ localStorage.setItem(REVKEY,JSON.stringify(all)); }catch(e){} }
+  function renderReviews(p){
+    var list=loadReviews()[p.id]||[];
+    document.getElementById("dRevEmpty").style.display=list.length?"none":"block";
+    if(list.length){
+      var sum=0; list.forEach(function(r){ sum+=r.stars||0; });
+      var avg=sum/list.length;
+      document.getElementById("dAvgStars").textContent=starsStr(Math.round(avg));
+      document.getElementById("dAvgText").textContent=avg.toFixed(1)+" average \u00B7 "+list.length+(list.length===1?" review":" reviews");
+    } else {
+      document.getElementById("dAvgStars").textContent=starsStr(0);
+      document.getElementById("dAvgText").textContent="No reviews yet";
+    }
+    document.getElementById("dReviews").innerHTML=list.map(function(r,i){
+      var replies=(r.replies||[]).map(function(rp){
+        return '<div class="rev-reply"><strong>'+esc(rp.name)+'</strong> <span class="rev-date">'+fmtDate(rp.ts)+'</span><p>'+esc(rp.text)+'</p></div>';
+      }).join("");
+      return '<div class="rev-item"><div class="rev-head"><span class="stars">'+starsStr(r.stars||0)+'</span><strong>'+esc(r.name)+'</strong><span class="rev-date">'+fmtDate(r.ts)+'</span></div><p class="rev-text">'+esc(r.text)+'</p><button type="button" class="rev-reply-btn" data-reply-toggle="'+i+'">Reply</button><div class="rev-replies">'+replies+'</div><form class="reply-form" data-reply-form="'+i+'" hidden><input type="text" placeholder="Your name" maxlength="60" data-reply-name aria-label="Your name"><input type="text" placeholder="Write a reply\u2026" maxlength="400" data-reply-text aria-label="Your reply"><button class="btn btn-ghost" type="submit" style="padding:9px 16px">Post Reply</button></form></div>';
+    }).join("");
+  }
+  function paintStarInput(){
+    var btns=document.querySelectorAll("#dStarInput button");
+    for(var i=0;i<btns.length;i++) btns[i].classList.toggle("on",i<revRating);
+  }
+  document.getElementById("dStarInput").addEventListener("click",function(e){
+    var b=e.target&&e.target.closest?e.target.closest("[data-star]"):null; if(!b) return;
+    revRating=parseInt(b.getAttribute("data-star"),10)||0;
+    paintStarInput();
+  });
+  document.getElementById("dRevForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    if(!currentDetail) return;
+    var name=document.getElementById("dRevName").value.trim();
+    var text=document.getElementById("dRevText").value.trim();
+    if(!revRating){ showToast("Please tap the stars to give a rating first."); return; }
+    if(!name||!text){ showToast("Please write your name and a comment."); return; }
+    var all=loadReviews(), list=all[currentDetail.id]||[];
+    list.push({name:name,stars:revRating,text:text,ts:Date.now(),replies:[]});
+    all[currentDetail.id]=list; saveReviews(all);
+    revRating=0; paintStarInput();
+    document.getElementById("dRevName").value=""; document.getElementById("dRevText").value="";
+    renderReviews(currentDetail);
+    showToast("Thank you \u2014 your feedback is posted below.");
+  });
+  document.getElementById("dReviews").addEventListener("click",function(e){
+    var b=e.target&&e.target.closest?e.target.closest("[data-reply-toggle]"):null; if(!b) return;
+    var f=document.querySelector('[data-reply-form="'+b.getAttribute("data-reply-toggle")+'"]');
+    if(f){ f.hidden=!f.hidden; if(!f.hidden){ var inp=f.querySelector("[data-reply-name]"); if(inp) inp.focus(); } }
+  });
+  document.getElementById("dReviews").addEventListener("submit",function(e){
+    var f=e.target&&e.target.closest?e.target.closest("[data-reply-form]"):null;
+    if(!f||!currentDetail) return;
+    e.preventDefault();
+    var idx=parseInt(f.getAttribute("data-reply-form"),10);
+    var name=f.querySelector("[data-reply-name]").value.trim();
+    var text=f.querySelector("[data-reply-text]").value.trim();
+    if(!name||!text){ showToast("Please write your name and a reply."); return; }
+    var all=loadReviews(), list=all[currentDetail.id]||[];
+    if(!list[idx]) return;
+    list[idx].replies=list[idx].replies||[];
+    list[idx].replies.push({name:name,text:text,ts:Date.now()});
+    all[currentDetail.id]=list; saveReviews(all);
+    renderReviews(currentDetail);
+    showToast("Reply posted.");
+  });
+  /* ===== Related pieces — same sub-category first, then the rest of
+     the same category; never the piece itself. Each card opens its
+     own detail page (picture click included). ===== */
+  function renderRelated(p){
+    var sameSub=PRODUCTS.filter(function(x){ return x.id!==p.id&&x.cat===p.cat&&p.sub&&x.sub===p.sub; });
+    var rest=PRODUCTS.filter(function(x){ return x.id!==p.id&&x.cat===p.cat&&x.sub!==p.sub; });
+    var list=sameSub.concat(rest).slice(0,3);
+    document.getElementById("dRelated").innerHTML=list.map(cardHTML).join("");
+    document.getElementById("dRelatedEmpty").style.display=list.length?"none":"block";
+  }
+  var toast=document.getElementById("toast"), toastT=null;
+  function showToast(msg){ toast.textContent=msg; toast.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(function(){toast.classList.remove("show")},4200); }
+
+  /* Countdown to the next drop — a fixed 3-day cycle anchored to a set
+     start date, so the timer never resets on reload: drops land at local
+     midnight on the anchor date and every 3 days after it. */
+  var DROP_EVERY_DAYS=3;
+  var DROP_ANCHOR=new Date(2026,10,23,0,0,0,0); /* first drop: Mon 23 Nov 2026 */
+  var DROP_CYCLE_MS=DROP_EVERY_DAYS*24*60*60*1000;
+  function nextDropDate(now){
+    var elapsed=now.getTime()-DROP_ANCHOR.getTime();
+    var cycles=Math.floor(elapsed/DROP_CYCLE_MS);
+    return new Date(DROP_ANCHOR.getTime()+(cycles+1)*DROP_CYCLE_MS);
+  }
+  function tick(){
+    var now=new Date(), end=nextDropDate(now);
+    var s=Math.max(0,Math.floor((end-now)/1000));
+    var d=Math.floor(s/86400), h=Math.floor(s%86400/3600), m=Math.floor(s%3600/60), ss=s%60;
+    document.getElementById("cd").textContent=d+"d "+(h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(ss<10?"0":"")+ss;
+    var dateEl=document.getElementById("cdDate");
+    if(dateEl) dateEl.textContent="Next drop: "+end.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
+  }
+  tick(); setInterval(tick,1000);
+
+  /* ===== Views & routing — home / category pages / reserve page ===== */
+  var viewHome=document.getElementById("view-home"), viewPage=document.getElementById("view-page"), viewReserve=document.getElementById("view-reserve"), viewDetail=document.getElementById("view-detail");
+  /* The browser must never restore an old scroll position for these
+     in-page views — every view switch starts at its own header. */
+  if("scrollRestoration" in history) history.scrollRestoration="manual";
+  var viewName="home";
+  function showView(name){
+    viewName=name;
+    viewHome.hidden=name!=="home";
+    viewPage.hidden=name!=="page";
+    viewReserve.hidden=name!=="reserve";
+    viewDetail.hidden=name!=="detail";
+    currentView=name==="home"?viewHome:(name==="page"?viewPage:(name==="reserve"?viewReserve:viewDetail));
+    if(window.ScrollTrigger) setTimeout(function(){ScrollTrigger.refresh()},60);
+  }
+  var currentView=viewHome;
+  function jumpTop(){
+    var de=document.documentElement, prev=de.style.scrollBehavior;
+    de.style.scrollBehavior="auto"; window.scrollTo(0,0);
+    /* window.scrollTo alone only moves this document's own scroller. If
+       the page is framed and an outer scroller is the one actually
+       moving, only scrollIntoView on the new view's first element pulls
+       every scroller in the chain back to the view's header. */
+    if(currentView&&currentView.scrollIntoView){ try{ currentView.scrollIntoView({block:"start",behavior:"instant"}); }catch(e){ currentView.scrollIntoView(); } }
+    de.style.scrollBehavior=prev;
+  }
+  /* A single scrollTo at tap time is not enough: after a tap the browser
+     can scroll the tapped link back into view, restore the position it
+     saved for the new hash entry, or re-anchor while the new view's
+     images load — each lands the reader mid-page, near the last pieces.
+     So a view switch resets the scroll at once, again on the next frame,
+     and twice more as the new page settles. Nothing else scrolls in that
+     window, so the repeats are invisible when the first one already held. */
+  function jumpTopHard(){
+    jumpTop();
+    if(document.activeElement&&document.activeElement.blur&&document.activeElement!==document.body) document.activeElement.blur();
+    requestAnimationFrame(jumpTop);
+    setTimeout(jumpTop,90);
+    setTimeout(jumpTop,380);
+  }
+  /* ===== Back to Home scroll restore =====
+     Leaving home for a category page remembers exactly where the reader
+     was — the scroll position and the section it belongs to. Back to
+     Home returns to that same spot (e.g. the Womens section they opened
+     it from), never to the header. Category pages themselves still open
+     at their own header via jumpTopHard above. */
+  var savedHomeScroll=null, savedHomeAnchor=null;
+  function homeAnchorAt(y){
+    var ids=["mens","womens","kids","home","drop"], best=null;
+    for(var i=0;i<ids.length;i++){
+      var el=document.getElementById(ids[i]); if(!el) continue;
+      var top=el.getBoundingClientRect().top+window.scrollY;
+      if(top<=y+160) best=ids[i];
+    }
+    return best;
+  }
+  function scrollToY(y){
+    var de=document.documentElement, prev=de.style.scrollBehavior;
+    de.style.scrollBehavior="auto"; window.scrollTo(0,y);
+    de.style.scrollBehavior=prev;
+  }
+  function restoreHomeScroll(){
+    var y=savedHomeScroll, anchor=savedHomeAnchor;
+    savedHomeScroll=null; savedHomeAnchor=null;
+    if(y===null||y===undefined){ jumpTopHard(); return; }
+    function attempt(){ scrollToY(y); }
+    attempt();
+    if(document.activeElement&&document.activeElement.blur&&document.activeElement!==document.body) document.activeElement.blur();
+    requestAnimationFrame(attempt);
+    setTimeout(attempt,90);
+    setTimeout(function(){
+      attempt();
+      /* If the document scroller could not move the framed page, fall
+         back to pulling the section the reader came from into view. */
+      if(anchor){
+        var el=document.getElementById(anchor);
+        if(el){
+          var r=el.getBoundingClientRect();
+          if(r.bottom<40||r.top>window.innerHeight-40){ try{ el.scrollIntoView({block:"start",behavior:"instant"}); }catch(e){ el.scrollIntoView(); } }
+        }
+      }
+    },380);
+  }
+  function applyRoute(key){
+    detailStack.length=0; currentDetail=null;
+    if(CATS.indexOf(key)>-1){ openCategory(key); jumpTopHard(); }
+    else if(key==="reserve"){ activeCat=null; showView("reserve"); jumpTopHard(); }
+    else { activeCat=null; showView("home"); if(savedHomeScroll!==null){ restoreHomeScroll(); } else { jumpTopHard(); } }
+  }
+  function go(key){
+    /* Save the home spot only when leaving home — moving between
+       category pages must not overwrite where home was left. */
+    if(viewName==="home"&&key!==""){ savedHomeScroll=window.scrollY; savedHomeAnchor=homeAnchorAt(window.scrollY); }
+    applyRoute(key);
+    try{ history.pushState({view:key},"","#/"+key); }catch(e){}
+  }
+  function route(){
+    var h=location.hash||"";
+    applyRoute(h.indexOf("#/")===0?h.slice(2):"");
+  }
+  window.addEventListener("hashchange",route);
+  window.addEventListener("popstate",route);
+  /* Internal links switch views directly on tap — the view change never
+     depends on the browser following a fragment link, and the new page
+     opens instantly at its own header. Plain in-page anchors (Search,
+     collections, signature) scroll within the home view instead. */
+  document.addEventListener("click",function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;
+    if(!a) return;
+    var href=a.getAttribute("href")||"";
+    if(href.indexOf("#/")===0){ e.preventDefault(); go(href.slice(2)); return; }
+    if(href==="#top"||href==="#"){ e.preventDefault(); go(""); return; }
+    if(href==="#drop"){ e.preventDefault(); activeCat=null; showView("home"); var d=document.getElementById("drop"); if(d) d.scrollIntoView(); return; }
+    if(href.length>1){
+      var tgt=null; try{ tgt=document.querySelector(href); }catch(err){}
+      if(tgt){ e.preventDefault(); activeCat=null; showView("home"); tgt.scrollIntoView(); if(href==="#search"){ setTimeout(function(){ var inp=document.getElementById("search"); if(inp) inp.focus({preventScroll:true}); },500); } }
+    }
+  });
+  route();
+
+  /* ================================================================
+     HERO — HANGERS SWAY, RODS NEVER MOVE. The base photograph
+     is NEVER transformed: the brand name, the writing, every
+     rail's ROD and the picture as a whole stay completely
+     still at all times. Each overlay copy of the picture is
+     clipped to ONE rail's hangers and clothes ONLY, starting
+     JUST BELOW that rail's rod (see the clips in the markup —
+     the rod is in the static base only, never in a moving
+     layer). The only transform ever applied is a small
+     ROTATION of that one overlay, pivoting on the hanger
+     hooks just below the rod (transform-origin = the clip's
+     top edge): no translation at all, so at the pivot line
+     the movement is zero and it grows gently toward the
+     hems — one hanger pushed forward, one coat back, like
+     sliding hangers along a wardrobe rail. Lerped in one
+     rAF loop, transform ONLY on that overlay's <img>, so it
+     stays iOS-smooth. All other overlays ease back to exact
+     rest (aligned with the base, invisible). The folded
+     carpets (zone 5) have no hangers: damp 0, they never
+     move. A tap on mobile gives the tapped rail the same
+     small hanger-only sway for a moment; tapping does
+     nothing else — no slide, no fan-out, no product, no
+     centre move.
+     Rail zones (fractions of hero width, matching the clips
+     in the markup; "top" = just below that rail's rod):
+     0 long coats, 1 puffers, 2 hoodies & sweaters,
+     3 shirts & trousers, 4 kids, 5 carpets (static).
+     ================================================================ */
+  (function(){
+    var wrap=document.getElementById("heroPhoto");
+    if(!wrap) return;
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var zones=[
+      {l:0,    r:.168, top:.384, damp:1},
+      {l:.168, r:.312, top:.384, damp:1},
+      {l:.312, r:.538, top:.398, damp:1},
+      {l:.538, r:.698, top:.403, damp:1},
+      {l:.698, r:.842, top:.568, damp:1},
+      {l:.842, r:1,    top:.35,  damp:0}
+    ];
+    var rails=[];
+    wrap.querySelectorAll(".rail-sway").forEach(function(el){
+      var im=el.querySelector("img");
+      if(!im) return;
+      /* Pivot on the hanger hooks JUST BELOW the rod: the
+         origin's Y is exactly the clip's top edge, so the top
+         of the moving layer (immediately under the rod) does
+         not move at all and the rod above it is untouched. */
+      im.style.transformOrigin=(im.getAttribute("data-ox")||"50%")+" "+(im.getAttribute("data-oy")||"38%");
+      rails.push({im:im,rot:0,trot:0});
+    });
+    if(!rails.length) return;
+    var active=-1, tapRail=-1, tapUntil=0, rafId=null;
+    function tick(now){
+      rafId=null;
+      var alive=false;
+      if(!now) now=performance.now();
+      for(var i=0;i<rails.length;i++){
+        var rl=rails[i], trot=rl.trot;
+        if(i===tapRail && now<tapUntil){
+          trot=Math.sin(now/240+i*1.3)*.55*zones[i].damp;
+          alive=true;
+        } else if(i===tapRail){
+          tapRail=-1;
+          if(i!==active){ rl.trot=0; trot=0; }
+        } else if(i===active){
+          /* gentle continuous sway while the pointer rests on the rail */
+          trot=rl.trot + Math.sin(now/520+i*1.7)*.12*zones[i].damp;
+          alive=true;
+        }
+        rl.rot+=(trot-rl.rot)*.08;
+        if(Math.abs(rl.rot)>.002){
+          /* ROTATION ONLY — never a translation, so nothing
+             at or above the hooks (and no rod) can shift. */
+          rl.im.style.transform="rotate("+rl.rot.toFixed(3)+"deg)";
+          alive=true;
+        } else if(rl.rot!==0){
+          rl.rot=0; rl.im.style.transform="";
+        }
+        if(i!==active && i!==tapRail && rl.trot!==0){ rl.trot=0; }
+        if(rl.trot!==0) alive=true;
+      }
+      if(alive) rafId=requestAnimationFrame(tick);
+    }
+    function start(){ if(rafId===null) rafId=requestAnimationFrame(tick); }
+    function railAt(e){
+      var r=wrap.getBoundingClientRect();
+      if(!r.width||!r.height) return -1;
+      var fx=(e.clientX-r.left)/r.width, fy=(e.clientY-r.top)/r.height;
+      for(var i=0;i<zones.length;i++){
+        if(fx>=zones[i].l && fx<zones[i].r && fy>=zones[i].top) return i;
+      }
+      return -1;
+    }
+    function aim(e){
+      var i=railAt(e);
+      active=i;
+      for(var k=0;k<rails.length;k++){ if(k!==i){ rails[k].trot=0; } }
+      if(i>=0 && rails[i]){
+        var r=wrap.getBoundingClientRect();
+        var z=zones[i];
+        var p=((e.clientX-r.left)/r.width - z.l)/((z.r-z.l)||1)-.5; /* -0.5..0.5 inside this rail */
+        if(p<-.5)p=-.5; if(p>.5)p=.5;
+        rails[i].trot=p*1.1*z.damp;
+      }
+      start();
+    }
+    wrap.addEventListener("pointermove",aim);
+    wrap.addEventListener("pointerdown",function(e){
+      aim(e);
+      var i=railAt(e);
+      if(i>=0){ tapRail=i; tapUntil=performance.now()+1100; start(); }
+    });
+    wrap.addEventListener("pointerleave",function(){
+      active=-1;
+      rails.forEach(function(rl){ rl.trot=0; });
+      start();
+    });
+    wrap.addEventListener("pointercancel",function(){
+      active=-1;
+      rails.forEach(function(rl){ rl.trot=0; });
+      start();
+    });
+  })();
+
+  /* Marquee */
+  var phrase="Fresh Drop Every 3 Days <b>•</b> Mens <b>•</b> Womens <b>•</b> Kids <b>•</b> Home <b>•</b> Only One Piece Each <b>•</b> First Come, First Served <b>•</b> ";
+  document.getElementById("marqueeTrack").innerHTML="<span>"+phrase.repeat(3)+"</span><span>"+phrase.repeat(3)+"</span>";
+
+  /* Sticky top bar shadow on scroll */
+  var header=document.getElementById("siteHeader");
+  function onScroll(){ if(window.scrollY>10) header.classList.add("scrolled"); else header.classList.remove("scrolled"); }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+  /* Hero headline letters reveal + GSAP scroll animations */
+  var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var title=document.getElementById("heroTitle");
+  if(title&&!reduced){
+    var raw=title.innerHTML;
+    title.innerHTML=raw.split("<br>").map(function(line){
+      var tmp=document.createElement("div"); tmp.innerHTML=line;
+      var out='<span class="line">';
+      tmp.childNodes.forEach(function(node){
+        if(node.nodeType===3){ node.textContent.split("").forEach(function(c){ out+= c===" "?" ":'<span class="ch">'+c+"</span>"; }); }
+        else if(node.nodeType===1){ var inner=""; node.textContent.split("").forEach(function(c){ inner+= c===" "?" ":'<span class="ch">'+c+"</span>"; }); out+="<em>"+inner+"</em>"; }
+      });
+      return out+"</span>";
+    }).join("");
+  }
+  if(window.gsap&&!reduced){
+    if(window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+    var chars=document.querySelectorAll("#heroTitle .ch");
+    if(chars.length) gsap.fromTo(chars,{y:56,opacity:0,filter:"blur(8px)"},{y:0,opacity:1,filter:"blur(0px)",duration:.9,stagger:.035,ease:"power3.out",delay:.15});
+    gsap.fromTo(".h-rev",{y:22,opacity:0},{y:0,opacity:1,duration:.85,stagger:.14,ease:"power3.out",delay:.8});
+    if(window.ScrollTrigger){
+      /* Below-hero entrance: a gentle zoom-in only — elements fade
+         in while scaling from 0.96 to 1.0 in place. No side-sliding
+         and no letter-by-letter movement anywhere below the hero. */
+      gsap.utils.toArray(".reveal").forEach(function(el){
+        gsap.fromTo(el,{opacity:0,scale:.96},{opacity:1,scale:1,duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%",once:true}});
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>
