@@ -864,7 +864,7 @@
           <div class="m-wa">
             <button class="b-buynow" id="dBuyNow" type="button">Buy Now</button>
           </div>
-          <div class="codebox" id="dCodeBox"><div class="caps" style="color:var(--rust)">Your Reserve Code</div><strong id="dCodeText"></strong><p style="margin:6px 0 0;font-size:.9rem">Show this code at the shop. For Gahkuch locals, this piece is held for you <strong>until the shop closes today</strong>. To keep it 1–2 days, a half advance is required — otherwise the piece returns to sale when the time expires.</p></div>
+          <div class="codebox" id="dCodeBox"><div class="caps" style="color:var(--rust)">Your Reserve Code</div><strong id="dCodeText"></strong><p style="margin:6px 0 0;font-size:.9rem">Show this code at the shop. For Gahkuch locals, this piece is held for you <strong>until the shop closes today</strong>. To keep it 1–2 days, a half advance is required — otherwise the piece returns to sale when the time expires.</p><button class="b-wa" id="dWaReserve" type="button" style="width:100%;margin-top:12px;padding:12px 10px;font-size:.88rem">Send Reserve on WhatsApp</button></div>
           <p style="color:var(--muted);font-size:.86rem;margin-top:14px">A long hold is confirmed only when the payment is visible in the shop's account — not on a screenshot. If the piece has already sold, your payment is refunded in full.</p>
         </div>
       </div>
@@ -1055,8 +1055,18 @@
       <h2 class="adm-h">Settings</h2>
       <form class="adm-form" id="admSettingsForm" style="margin-top:4px">
         <div class="adm-grid">
-          <div class="adm-field"><label for="setWhatsapp">WhatsApp Number (international, digits only)</label><input id="setWhatsapp" type="text" inputmode="numeric" placeholder="92300… — leave empty until the shop number is ready"></div>
+          <div class="adm-field"><label for="setWhatsapp">WhatsApp Number — the shop's order number</label><input id="setWhatsapp" type="text" inputmode="tel" placeholder="03XX-XXXXXXX — leave empty until the shop number is ready"></div>
           <div class="adm-field"><label for="setLiveUrl">Live Website URL</label><input id="setLiveUrl" type="url" value="https://onepieceshop-3vc0.netlify.app/"></div>
+        </div>
+        <p class="adm-p" style="margin-top:12px">This one number controls <strong>every</strong> WhatsApp button on the website — the floating button, the header icon, Reserve, Buy Now (full payment) and Half Payment, on product cards and detail pages. Write it as <strong>03XXXXXXXXX</strong> or <strong>92XXXXXXXXXX</strong> — a local 03… number is converted to the 92… form WhatsApp links need, automatically. Leave it empty and the website keeps showing the copy-the-message sheet, exactly as before.</p>
+        <h3 class="adm-h" style="font-size:1.15rem;margin-top:26px">WhatsApp Messages</h3>
+        <p class="adm-p">The ready-written message a visitor sends for each button. Edit any of them here — after Save &amp; Publish, the website uses your text. Placeholders are filled in automatically: <strong>{code}</strong> piece code · <strong>{name}</strong> piece name · <strong>{price}</strong> · <strong>{size}</strong> · <strong>{measure}</strong> · <strong>{half}</strong> half amount · <strong>{remaining}</strong> · <strong>{reservecode}</strong> the visitor's reserve code. The bag message also takes <strong>{items}</strong>, <strong>{total}</strong>, <strong>{name}</strong> (customer name) and <strong>{address}</strong>.</p>
+        <div class="adm-grid">
+          <div class="adm-field full"><label for="waMsgGeneral">A — General Greeting (floating button &amp; header icon)</label><textarea id="waMsgGeneral" rows="2"></textarea></div>
+          <div class="adm-field full"><label for="waMsgReserve">B — Reserve a Piece (single product)</label><textarea id="waMsgReserve" rows="5"></textarea></div>
+          <div class="adm-field full"><label for="waMsgFull">C — Buy Now, Full Payment (single product)</label><textarea id="waMsgFull" rows="5"></textarea></div>
+          <div class="adm-field full"><label for="waMsgHalf">D — Half Payment Reserve (single product)</label><textarea id="waMsgHalf" rows="5"></textarea></div>
+          <div class="adm-field full"><label for="waMsgBag">E — Bag Order (all pieces, total, customer name &amp; address)</label><textarea id="waMsgBag" rows="5"></textarea></div>
         </div>
         <p class="adm-p" style="margin-top:12px">Publishing writes to GitHub repo <strong>hasnainqazi440-cyber/one-piece-shop</strong> (branch main) — data files <strong>assets/products.json</strong> and <strong>assets/site.json</strong>, product photos into <strong>assets/</strong> — through Netlify Git Gateway, always in the request body.</p>
         <div class="adm-btns"><button class="adm-btn" type="submit">Save Settings (in panel)</button></div>
@@ -1122,29 +1132,56 @@
 (function(){
   "use strict";
   /* ================================================================
-     WHATSAPP NUMBER — the shop's WhatsApp number goes here, ONE
-     place only (international format, digits only, e.g. "923001234567").
-     It is EMPTY for now: while empty, every WhatsApp button shows the
-     ready-written order message in a sheet with a Copy button instead
-     of opening a dead link. Fill this in and all buttons go live.
+     WHATSAPP — ONE control point: the admin panel's Settings tab.
+     The number lives in assets/site.json (settings.whatsapp) and the
+     message templates in settings.waMessages; applySite() below loads
+     both on every page open, so a panel Save & Publish updates every
+     WhatsApp button on the site — floating button, header icon,
+     Reserve, Buy Now (full) and Half Payment, on cards and detail
+     pages alike. The number may be typed in local format
+     (03XXXXXXXXX): waNormalize() converts it to the international
+     92… form wa.me needs. While the number is EMPTY, every WhatsApp
+     button shows the ready-written message in a sheet with a Copy
+     button instead of opening a dead link (the original behaviour).
      ================================================================ */
   var WA_NUMBER = "";
-  var WA_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.19.35-.58.35-1.08.25-1.19-.1-.1-.23-.16-.48-.28z"/></svg>';
-  function waMessage(p,kind){
-    if(!p) return "Assalam-o-Alaikum! I am browsing One Piece Shop, Gahkuch, and I want to ask about a piece I saw on the website.";
-    var head = kind==="full"
-      ? "Assalam-o-Alaikum! I want to BUY NOW (Full Payment) this piece from One Piece Shop:"
-      : "Assalam-o-Alaikum! I want to reserve this piece from One Piece Shop with HALF PAYMENT (hold 1–2 days):";
-    var lines = [head,
-      "• Piece: "+p.name+" ("+p.id+")",
-      "• Price: "+money(p.price),
-      "• Size: "+p.size+" — "+p.measure];
-    if(kind==="half") lines.push("• Half advance: "+money(Math.ceil(p.price/2)));
-    lines.push("Please confirm it is still available and share the payment details. Thank you!");
-    return lines.join("\n");
+  function waNormalize(n){
+    var d=String(n==null?"":n).replace(/[^0-9]/g,"");
+    if(d.indexOf("00")===0) d=d.slice(2);
+    if(d.charAt(0)==="0") d="92"+d.slice(1);
+    return d;
   }
-  function waOpen(p,kind){
-    var msg = waMessage(p,kind);
+  /* Default WhatsApp message templates — the same text the panel
+     starts with. Placeholders: {code} piece code, {name}, {price},
+     {size}, {measure}, {half}, {remaining}, {reservecode}; the bag
+     template uses {items}, {total}, {name} (customer), {address}. */
+  var WA_TEMPLATES = {
+    general: "Assalam-o-Alaikum! I am browsing One Piece Shop, Gahkuch, and I want to ask about a piece I saw on the website.",
+    reserve: "Assalam-o-Alaikum! I want to RESERVE this piece from One Piece Shop:\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\n• My reserve code: {reservecode}\nPlease hold this piece for me. Thank you!",
+    full: "Assalam-o-Alaikum! I want to BUY NOW (Full Payment) this piece from One Piece Shop:\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\nPlease confirm it is still available and share the payment details. Thank you!",
+    half: "Assalam-o-Alaikum! I want to reserve this piece from One Piece Shop with HALF PAYMENT (hold 1–2 days):\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\n• Half advance: {half}\nPlease confirm it is still available and share the payment details. Thank you!",
+    bag: "Assalam-o-Alaikum! I want to order these pieces from One Piece Shop:\n{items}\nTotal: {total}\nName: {name}\nAddress: {address}\nPlease confirm availability and share the payment details. Thank you!"
+  };
+  function waFill(tpl,vals){
+    return String(tpl==null?"":tpl).replace(/\{([a-z]+)\}/g,function(m,k){ return vals[k]!=null?vals[k]:m; });
+  }
+  var WA_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.03h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.81-1.19.35-.58.35-1.08.25-1.19-.1-.1-.23-.16-.48-.28z"/></svg>';
+  function waMessage(p,kind,resCode){
+    if(!p||kind==="general") return waFill(WA_TEMPLATES.general,{});
+    var half=Math.ceil(p.price/2);
+    return waFill(WA_TEMPLATES[kind]||WA_TEMPLATES.reserve,{
+      name:p.name, code:p.id, price:money(p.price), size:p.size, measure:p.measure,
+      half:money(half), remaining:money(p.price-half), reservecode:resCode||""
+    });
+  }
+  /* Bag / multi-piece order message — built from the panel's bag
+     template: items = one "• Name (CODE) — Rs …" line per piece. */
+  function waBagMessage(items,total,custName,custAddress){
+    var lines=(items||[]).map(function(p){ return "• "+p.name+" ("+p.id+") — "+money(p.price); });
+    return waFill(WA_TEMPLATES.bag,{items:lines.join("\n"),total:money(total||0),name:custName||"",address:custAddress||""});
+  }
+  function waOpen(p,kind,resCode){
+    var msg = waMessage(p,kind,resCode);
     if(WA_NUMBER){
       window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
     } else {
@@ -1194,7 +1231,8 @@
   function applySite(site){
     if(!site) return; SITE=site;
     var S=site.sections||{}, st=site.settings||{};
-    if(st.whatsapp) WA_NUMBER=String(st.whatsapp).replace(/[^0-9]/g,"");
+    if(st.whatsapp) WA_NUMBER=waNormalize(st.whatsapp);
+    if(st.waMessages){ for(var wk in WA_TEMPLATES){ if(st.waMessages[wk]) WA_TEMPLATES[wk]=String(st.waMessages[wk]); } }
     var days=parseInt(st.dropEveryDays,10); if(days>0){ DROP_EVERY_DAYS=days; DROP_CYCLE_MS=days*24*60*60*1000; }
     if(st.dropAnchor){ var parts=String(st.dropAnchor).split("-"); if(parts.length===3) DROP_ANCHOR=new Date(+parts[0],+parts[1]-1,+parts[2],0,0,0,0); }
     if(typeof tick==="function") tick();
@@ -1505,6 +1543,11 @@
     render();
   }
   document.getElementById("dReserve").addEventListener("click",doDetailReserve);
+  /* Reserve on WhatsApp — sends the panel's Reserve template with
+     this piece's details and the visitor's own reserve code. */
+  var dWaBtn=document.getElementById("dWaReserve");
+  dWaBtn.innerHTML=WA_SVG+"Send Reserve on WhatsApp";
+  dWaBtn.addEventListener("click",function(){ if(currentDetail) waOpen(currentDetail,"reserve",reserved[currentDetail.id]||""); });
   document.getElementById("dBuyNow").addEventListener("click",function(){ if(currentDetail) openBuyPanel(currentDetail); });
   /* Back from a detail page — returns to the exact spot the reader
      came from: the same listing view at the same scroll position, or
@@ -1962,6 +2005,35 @@
   function money(n){ return "Rs "+Number(n||0).toLocaleString("en-PK"); }
   function setStatus(msg){ var el=$("admStatus"); if(el) el.textContent=msg; }
   function setNote(msg){ var el=$("admNote"); if(el) el.innerHTML=msg; }
+  /* WhatsApp — the number and the message templates live in
+     site.settings (whatsapp + waMessages) and are published inside
+     assets/site.json; the storefront reads them from the same file.
+     A local 03… number is stored in the international 92… form. */
+  var WA_DEFAULT_MSGS={
+    general:"Assalam-o-Alaikum! I am browsing One Piece Shop, Gahkuch, and I want to ask about a piece I saw on the website.",
+    reserve:"Assalam-o-Alaikum! I want to RESERVE this piece from One Piece Shop:\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\n• My reserve code: {reservecode}\nPlease hold this piece for me. Thank you!",
+    full:"Assalam-o-Alaikum! I want to BUY NOW (Full Payment) this piece from One Piece Shop:\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\nPlease confirm it is still available and share the payment details. Thank you!",
+    half:"Assalam-o-Alaikum! I want to reserve this piece from One Piece Shop with HALF PAYMENT (hold 1–2 days):\n• Piece: {name} ({code})\n• Price: {price}\n• Size: {size} — {measure}\n• Half advance: {half}\nPlease confirm it is still available and share the payment details. Thank you!",
+    bag:"Assalam-o-Alaikum! I want to order these pieces from One Piece Shop:\n{items}\nTotal: {total}\nName: {name}\nAddress: {address}\nPlease confirm availability and share the payment details. Thank you!"
+  };
+  var WA_FIELDS={general:"waMsgGeneral",reserve:"waMsgReserve",full:"waMsgFull",half:"waMsgHalf",bag:"waMsgBag"};
+  function waNorm(n){
+    var d=String(n==null?"":n).replace(/[^0-9]/g,"");
+    if(d.indexOf("00")===0) d=d.slice(2);
+    if(d.charAt(0)==="0") d="92"+d.slice(1);
+    return d;
+  }
+  function fillWaMessages(){
+    var m=(site.settings&&site.settings.waMessages)||{};
+    Object.keys(WA_FIELDS).forEach(function(k){ var el=$(WA_FIELDS[k]); if(el) el.value=m[k]||WA_DEFAULT_MSGS[k]; });
+  }
+  function collectWaMessages(){
+    if(!site.settings) site.settings={};
+    var m=site.settings.waMessages||(site.settings.waMessages={});
+    Object.keys(WA_FIELDS).forEach(function(k){ var el=$(WA_FIELDS[k]); if(el) m[k]=el.value; });
+    site.settings.whatsapp=waNorm($("setWhatsapp").value);
+    $("setWhatsapp").value=site.settings.whatsapp;
+  }
 
   /* ---------- Load the live data files ---------- */
   function loadData(){
@@ -1969,7 +2041,7 @@
     var p2=fetch("assets/site.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).catch(function(){ return null; });
     Promise.all([p1,p2]).then(function(res){
       products=Array.isArray(res[0])?res[0]:[];
-      site=res[1]||{settings:{whatsapp:"",liveUrl:"https://onepieceshop-3vc0.netlify.app/",dropEveryDays:3,dropAnchor:"2026-11-23",instagram:"",facebook:""},sections:{}};
+      site=res[1]||{settings:{whatsapp:"",waMessages:WA_DEFAULT_MSGS,liveUrl:"https://onepieceshop-3vc0.netlify.app/",dropEveryDays:3,dropAnchor:"2026-11-23",instagram:"",facebook:""},sections:{}};
       if(!site.settings) site.settings={};
       if(!site.sections) site.sections={};
       renderAll();
@@ -2051,6 +2123,7 @@
   function fillSettings(){
     var st=site.settings||{};
     $("setWhatsapp").value=st.whatsapp||"";
+    fillWaMessages();
     $("setLiveUrl").value=st.liveUrl||"https://onepieceshop-3vc0.netlify.app/";
     $("admVisitBtn").href=st.liveUrl||"https://onepieceshop-3vc0.netlify.app/";
     $("soInstagram").value=st.instagram||"";
@@ -2214,10 +2287,10 @@
   });
   $("admSettingsForm").addEventListener("submit",function(e){
     e.preventDefault();
-    site.settings.whatsapp=$("setWhatsapp").value.replace(/[^0-9]/g,"");
+    collectWaMessages();
     site.settings.liveUrl=$("setLiveUrl").value.trim()||"https://onepieceshop-3vc0.netlify.app/";
     $("admVisitBtn").href=site.settings.liveUrl;
-    setStatus("Settings saved in the panel — publish to make them live.");
+    setStatus(site.settings.whatsapp?("Settings saved in the panel — WhatsApp number "+site.settings.whatsapp+" and your messages apply on publish."):"Settings saved in the panel — WhatsApp number is empty, so the website keeps the copy-message sheet until a number is added.");
   });
 
   /* ---------- Netlify Identity ---------- */
@@ -2273,7 +2346,7 @@
       return;
     }
     collectSections();
-    site.settings.whatsapp=$("setWhatsapp").value.replace(/[^0-9]/g,"");
+    collectWaMessages();
     site.settings.liveUrl=$("setLiveUrl").value.trim()||site.settings.liveUrl;
     site.settings.instagram=$("soInstagram").value.trim();
     site.settings.facebook=$("soFacebook").value.trim();
