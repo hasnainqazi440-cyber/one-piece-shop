@@ -2044,6 +2044,10 @@
       site=res[1]||{settings:{whatsapp:"",waMessages:WA_DEFAULT_MSGS,liveUrl:"https://onepieceshop-3vc0.netlify.app/",dropEveryDays:3,dropAnchor:"2026-11-23",instagram:"",facebook:""},sections:{}};
       if(!site.settings) site.settings={};
       if(!site.sections) site.sections={};
+      /* Counters first: the dashboard numbers are written the moment
+         the product list lands, before any other panel renderer runs,
+         so they can never be left at their initial 0 values. */
+      renderDashboard();
       renderAll();
       setStatus("Loaded "+products.length+" products from the live data files.");
     });
@@ -2052,17 +2056,19 @@
   /* ---------- Dashboard ---------- */
   function renderDashboard(){
     var av=0,rs=0,so=0,sales=0,today=0;
-    products.forEach(function(p){
-      if(p.status==="Available") av++;
-      else if(p.status==="Reserved") rs++;
-      else if(p.status==="Sold"){ so++; sales+=Number(p.price)||0; if(soldToday[p.id]) today+=Number(p.price)||0; }
+    (products||[]).forEach(function(p){
+      var st=String((p&&p.status)||"").trim().toLowerCase();
+      if(st==="available") av++;
+      else if(st==="reserved") rs++;
+      else if(st==="sold"){ so++; sales+=Number(p.price)||0; if(soldToday[p.id]) today+=Number(p.price)||0; }
     });
-    $("stTotal").textContent=products.length;
-    $("stAvail").textContent=av;
-    $("stRes").textContent=rs;
-    $("stSold").textContent=so;
-    $("stSales").textContent=money(sales);
-    $("stToday").textContent=money(today);
+    var set=function(id,val){ var el=$(id); if(el) el.textContent=val; };
+    set("stTotal",(products||[]).length);
+    set("stAvail",av);
+    set("stRes",rs);
+    set("stSold",so);
+    set("stSales",money(sales));
+    set("stToday",money(today));
   }
 
   /* ---------- Products list ---------- */
@@ -2383,7 +2389,7 @@
   /* ---------- Init (called by the router when #/admin opens) ---------- */
   window.__opsAdminInit=function(){
     paintAuth();
-    if(inited) return;
+    if(inited){ renderDashboard(); return; }
     inited=true;
     loadData();
   };
