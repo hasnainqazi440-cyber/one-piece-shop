@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@400;500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
   /* ===== Theme: Belle Archive layout, burgundy & cream =====
      Warm cream page #F5EFE3 (unchanged), deep burgundy / maroon
@@ -490,6 +491,66 @@
   .codebox p{color:var(--muted)}
   .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:95;background:var(--forest);color:#fff;padding:13px 18px;border-radius:0;font-weight:600;display:none;max-width:92vw;text-align:center}
   .toast.show{display:block}
+
+  /* ===== ADMIN PANEL (#/admin) — same cream & burgundy theme =====
+     The live panel: Netlify Identity login, Git Gateway publishing
+     to the GitHub repo's data files (assets/products.json +
+     assets/site.json). Square corners, serif headings, hairlines —
+     the same design language as the shop. */
+  #view-admin{background:var(--paper);min-height:100vh}
+  .adm-wrap{max-width:1180px;margin:0 auto;padding:26px 20px 90px}
+  .adm-head{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--forest);padding-bottom:18px}
+  .adm-founder{font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(1.9rem,4.4vw,3rem);margin:6px 0 4px;color:var(--espresso);letter-spacing:.02em;line-height:1.05}
+  .adm-sub{color:var(--muted);margin:0;max-width:56ch}
+  .adm-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .adm-user{font-size:.85rem;font-weight:600;color:var(--forest)}
+  .adm-note{border:1px solid var(--brass);background:var(--card);padding:12px 16px;margin:16px 0 0;font-size:.92rem;color:var(--ink)}
+  .adm-note:empty{display:none}
+  .adm-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 6px}
+  .adm-tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;font-family:"Jost",sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:0}
+  .adm-tabs button.here{background:var(--forest);border-color:var(--forest);color:var(--cream)}
+  .adm-panel{padding:18px 0 8px}
+  .adm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.adm-stats{grid-template-columns:1fr 1fr}}
+  .adm-stat{background:var(--card);border:1px solid var(--line);padding:18px}
+  .adm-stat b{display:block;font-family:"Cormorant Garamond",serif;font-size:2rem;line-height:1;color:var(--espresso)}
+  .adm-stat span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .adm-h{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--espresso);margin:0 0 6px;font-weight:700}
+  .adm-p{color:var(--muted);margin:0 0 14px;max-width:70ch}
+  .adm-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);padding:12px 14px;margin-top:10px}
+  .adm-row .adm-row-main{display:flex;gap:12px;align-items:center;min-width:0}
+  .adm-row img{width:56px;height:56px;object-fit:cover;border:1px solid var(--line-soft);flex:none}
+  .adm-row .adm-row-name{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.12rem;color:var(--espresso);line-height:1.2}
+  .adm-row .adm-row-meta{font-size:.82rem;color:var(--muted)}
+  .adm-btns{display:flex;gap:8px;flex-wrap:wrap}
+  .adm-btn{border:1px solid var(--forest);background:var(--forest);color:var(--cream);padding:9px 14px;font-family:"Jost",sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.06em;cursor:pointer;border-radius:0;min-height:44px}
+  .adm-btn.ghost{background:transparent;color:var(--forest)}
+  .adm-btn.ghost:hover{background:rgba(107,31,42,.08)}
+  .adm-btn.danger{background:transparent;border-color:#a33;color:#a33}
+  .adm-btn:disabled{opacity:.45;cursor:not-allowed}
+  .adm-form{background:var(--card);border:1px solid var(--brass);padding:20px;margin-top:16px}
+  .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.adm-grid{grid-template-columns:1fr}}
+  .adm-field label{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);font-weight:600;margin-bottom:5px}
+  .adm-field input,.adm-field select,.adm-field textarea{width:100%;border:1px solid var(--line);background:var(--paper);padding:10px 12px;font:inherit;color:var(--ink);border-radius:0}
+  .adm-field.full{grid-column:1/-1}
+  .adm-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:640px){.adm-photos{grid-template-columns:1fr}}
+  .adm-photo{border:1px solid var(--line);background:var(--paper);padding:10px;text-align:center}
+  .adm-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--card-2);border:1px solid var(--line-soft)}
+  .adm-photo .adm-photo-name{font-size:.78rem;color:var(--muted);margin:6px 0;word-break:break-all}
+  .adm-photo input{width:100%;font-size:.8rem}
+  .adm-sec-edit{background:var(--card);border:1px solid var(--line);padding:18px;margin-top:14px}
+  .adm-sec-edit h3{font-family:"Cormorant Garamond",serif;margin:0 0 10px;font-size:1.3rem;color:var(--espresso)}
+  .adm-preview{border:1px dashed var(--brass);background:var(--paper);padding:14px;margin-top:12px}
+  .adm-preview .pv-h{font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:700;color:var(--espresso);line-height:1.2}
+  .adm-preview .pv-s{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);font-weight:600}
+  .adm-preview .pv-b{color:var(--muted);font-size:.92rem;margin-top:4px}
+  .adm-publishbar{position:sticky;bottom:0;z-index:5;background:var(--forest);color:var(--cream);padding:14px 16px;margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;border:1px solid var(--brass)}
+  .adm-publishbar .st{font-size:.9rem}
+  .adm-star{font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--line);padding:4px 8px;line-height:1}
+  .adm-star.on{color:var(--brass)}
+  .adm-empty{border:1px dashed var(--line);background:var(--card);padding:22px;text-align:center;color:var(--muted);margin-top:12px}
   @media (prefers-reduced-motion: reduce){
     *,*:before,*:after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important;scroll-behavior:auto !important}
     .marquee-track{animation:none}
@@ -563,8 +624,8 @@
   <section class="collections catcircles" id="collections">
     <div class="wrap">
       <div class="sec-title reveal">
-        <div class="caps">Explore</div>
-        <h2>Our Collections</h2>
+        <div class="caps" id="secCollectionsSub">Explore</div>
+        <h2 id="secCollectionsH">Our Collections</h2>
         <a class="viewall-link" href="#signature">View All →</a>
       </div>
       <nav class="row" aria-label="Shop by category">
@@ -591,8 +652,8 @@
   <section class="signature" id="signature">
     <div class="wrap">
       <div class="sec-title reveal">
-        <div class="caps">Featured</div>
-        <h2>Signature Pieces</h2>
+        <div class="caps" id="secSignatureSub">Featured</div>
+        <h2 id="secSignatureH">Signature Pieces</h2>
         <a class="viewall-link" href="#mens">Shop All →</a>
       </div>
       <div class="sig-carousel">
@@ -672,10 +733,10 @@
     <div class="wrap">
       <div class="dropband reveal">
         <div>
-          <div class="caps" style="color:var(--rust)">One Drop Every 3 Days • First Come, First Served</div>
-          <h2>Fresh Drop, <em>Every 3 Days.</em></h2>
-          <p>Every 3 days, a new drop arrives — 10–15 new photographs go up in each section, all at once, not random uploads. What is Available on drop day may be Sold before the next drop lands. Sold pieces stay on the page, marked Sold, so you can see the photos are real.</p>
-          <div style="margin-top:20px"><a class="btn btn-rust" href="#/mens">Browse This Drop's Sections</a></div>
+          <div class="caps" style="color:var(--rust)" id="secDropSub">One Drop Every 3 Days • First Come, First Served</div>
+          <h2 id="secDropH">Fresh Drop, <em>Every 3 Days.</em></h2>
+          <p id="secDropBody">Every 3 days, a new drop arrives — 10–15 new photographs go up in each section, all at once, not random uploads. What is Available on drop day may be Sold before the next drop lands. Sold pieces stay on the page, marked Sold, so you can see the photos are real.</p>
+          <div style="margin-top:20px"><a class="btn btn-rust" href="#/mens" id="secDropBtn">Browse This Drop's Sections</a></div>
         </div>
         <div class="dropclock"><div class="cd" id="cd">--:--:--</div><span>Until the next drop</span><div class="cd-date" id="cdDate"></div></div>
       </div>
@@ -683,15 +744,15 @@
   </section>
 
   <!-- ============ ABOUT — the burgundy atelier band ============ -->
-  <section class="block atelier" style="padding-top:52px;padding-bottom:56px">
+  <section class="block atelier" id="about" style="padding-top:52px;padding-bottom:56px">
     <div class="wrap">
       <div class="atelier-grid reveal">
         <div class="atelier-photo"><img src="assets/ladies-rack.jpg" alt="Ladies' coats on a rack in the shop, a soft pink coat in the middle"></div>
         <div class="atelier-copy">
-          <div class="caps">Our Atelier</div>
-          <h2>Your Own Gahkuch Shop,<br><em>Now Online.</em></h2>
-          <p>This is not a bulk catalogue. It is the catalogue of One Piece Shop — your own neighbourhood shop in Gahkuch, two shops combined into one — with its own vintage character. Every coat, jacket, hoodie and carpet is exactly one piece. What you see in the photo is what you will find in the shop. Reserve it in time, or someone else takes it tomorrow.</p>
-          <a class="btn btn-creamline" href="#/reserve">How to Reserve →</a>
+          <div class="caps" id="secAboutSub">Our Atelier</div>
+          <h2 id="secAboutH">Your Own Gahkuch Shop,<br><em>Now Online.</em></h2>
+          <p id="secAboutBody">This is not a bulk catalogue. It is the catalogue of One Piece Shop — your own neighbourhood shop in Gahkuch, two shops combined into one — with its own vintage character. Every coat, jacket, hoodie and carpet is exactly one piece. What you see in the photo is what you will find in the shop. Reserve it in time, or someone else takes it tomorrow.</p>
+          <a class="btn btn-creamline" href="#/reserve" id="secAboutBtn">How to Reserve →</a>
         </div>
         <div class="atelier-side">
           <div class="fr"><img src="assets/hero-coat.jpg" alt="A beige belted coat worn by a person"></div>
@@ -739,7 +800,7 @@
     </div>
   </section>
 
-  <section style="padding:0 0 62px"><div class="wrap"><div class="visit reveal"><div class="caps" style="color:var(--rust)">Visit the Shop</div><h2>Looks Good in the Photo?<br>It Feels Even Better in Hand.</h2><p>Gahkuch, Gilgit-Baltistan — near the schools and colleges, two shops combined into one. Reserve on the site, say your code, take your piece. First come, first served.</p><a class="btn btn-rust" href="#/" style="border-color:var(--rust)">Back to the Sections</a></div></div></section>
+  <section style="padding:0 0 62px" id="visitSec"><div class="wrap"><div class="visit reveal"><div class="caps" style="color:var(--rust)" id="secVisitSub">Visit the Shop</div><h2 id="secVisitH">Looks Good in the Photo?<br>It Feels Even Better in Hand.</h2><p id="secVisitBody">Gahkuch, Gilgit-Baltistan — near the schools and colleges, two shops combined into one. Reserve on the site, say your code, take your piece. First come, first served.</p><a class="btn btn-rust" href="#/" style="border-color:var(--rust)" id="secVisitBtn">Back to the Sections</a></div></div></section>
   </div><!-- /view-home -->
 
   <!-- ============ CATEGORY PAGE VIEW — one full page per category ============ -->
@@ -765,7 +826,7 @@
     <div class="wrap" style="padding-top:34px"><a class="backlink on-light" href="#/">← Back to Home</a></div>
     <section class="block" id="reserve" style="padding-top:22px">
       <div class="wrap">
-        <div class="block-head reveal"><div class="caps">The Reserve System • Rules in Writing</div><h2>How to Reserve</h2><p>Four simple steps and the house rules in writing — adapted for Gahkuch with a half-advance hold, the shop's own plan.</p></div>
+        <div class="block-head reveal"><div class="caps" id="secReserveSub">The Reserve System • Rules in Writing</div><h2 id="secReserveH">How to Reserve</h2><p id="secReserveBody">Four simple steps and the house rules in writing — adapted for Gahkuch with a half-advance hold, the shop's own plan.</p></div>
         <div class="steps">
           <article class="step reveal"><div class="n">1</div><h3>Browse</h3><p>Open a category page and check the photo, price, real measurements (chest / length / waist) and condition grade. Never trust the label size alone — the tape measure is the truth.</p></article>
           <article class="step reveal"><div class="n">2</div><h3>Reserve or Buy</h3><p>Every piece has two buttons: <strong>Reserve</strong> — free hold, you get a reserve code to show at the shop. <strong>Buy Now</strong> — opens the payment choices: pay the <strong>full price</strong> on WhatsApp and the piece is yours, or pay <strong>half</strong> on WhatsApp and the piece is held 1–2 days in your name, the rest on pickup.</p></article>
@@ -850,15 +911,164 @@
 <!-- ===== FOOTER — burgundy band ===== -->
 <footer>
   <div class="wrap">
-    <div class="caps f-caps">One Piece Shop — Gahkuch, Gilgit-Baltistan</div>
-    <div class="f-title">Become Part of the Story</div>
-    <p>Hand-picked vintage &amp; thrift — every piece only one, first come, first served. Reserve on the site, say your code at the shop, take your piece home.</p>
+    <div class="caps f-caps" id="secStorySub">One Piece Shop — Gahkuch, Gilgit-Baltistan</div>
+    <div class="f-title" id="secStoryH">Become Part of the Story</div>
+    <p id="secStoryBody">Hand-picked vintage &amp; thrift — every piece only one, first come, first served. Reserve on the site, say your code at the shop, take your piece home.</p>
     <nav class="f-links" aria-label="Footer categories">
-      <a href="#/mens">Mens</a><a href="#/womens">Womens</a><a href="#/kids">Kids</a><a href="#/home">Home</a><a href="#/reserve">How to Reserve</a>
+      <a href="#/mens">Mens</a><a href="#/womens">Womens</a><a href="#/kids">Kids</a><a href="#/home">Home</a><a href="#/reserve">How to Reserve</a><a href="#/admin">Admin Panel</a>
     </nav>
-    <div class="f-base">One Piece Shop · Gahkuch, Gilgit-Baltistan · Every piece only one — no restock, ever.</div>
+    <div class="f-base" id="secFooterBody">One Piece Shop · Gahkuch, Gilgit-Baltistan · Every piece only one — no restock, ever.</div>
   </div>
 </footer>
+
+<!-- ===== ADMIN PANEL — live at /admin (opens here as #/admin) =====
+     Same panel as built in Muse: cream #F5EFE3 + burgundy #6B1F2A,
+     "Founder: Hasnain Qazi", English UI. Login is Netlify Identity;
+     Save & Publish writes assets/products.json + assets/site.json
+     (and product photos) into the GitHub repo
+     hasnainqazi440-cyber/one-piece-shop through Netlify Git Gateway —
+     always in the request BODY, never in the URL. The storefront
+     reads those same data files, so published changes go live. -->
+<div id="view-admin" hidden>
+  <div class="adm-wrap">
+    <div class="adm-head">
+      <div>
+        <div class="caps" style="color:var(--rust)">One Piece Shop — Admin Panel</div>
+        <h1 class="adm-founder">Founder: Hasnain Qazi</h1>
+        <p class="adm-sub">Manage the live shop: products, reserves, signature pieces, the fresh-drop cycle and every word on the website.</p>
+      </div>
+      <div class="adm-actions">
+        <span class="adm-user" id="admUser"></span>
+        <button class="adm-btn" id="admLoginBtn" type="button">Log in — Netlify Identity</button>
+        <button class="adm-btn ghost" id="admLogoutBtn" type="button" hidden>Log out</button>
+        <a class="adm-btn ghost" id="admVisitBtn" href="https://onepieceshop-3vc0.netlify.app/" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Visit Website</a>
+        <a class="adm-btn ghost" href="#/" style="text-decoration:none;display:inline-flex;align-items:center">← Back to Website</a>
+      </div>
+    </div>
+    <div class="adm-note" id="admNote"></div>
+    <nav class="adm-tabs" id="admTabs" aria-label="Admin sections">
+      <button type="button" data-atab="dashboard" class="here">Dashboard</button>
+      <button type="button" data-atab="products">Products</button>
+      <button type="button" data-atab="reserves">Reserves</button>
+      <button type="button" data-atab="signature">Signature Pieces</button>
+      <button type="button" data-atab="freshdrop">Fresh Drop</button>
+      <button type="button" data-atab="website">Website Editor</button>
+      <button type="button" data-atab="social">Social</button>
+      <button type="button" data-atab="settings">Settings</button>
+    </nav>
+
+    <section class="adm-panel" data-apanel="dashboard">
+      <div class="adm-stats">
+        <div class="adm-stat"><b id="stTotal">0</b><span>Total Products</span></div>
+        <div class="adm-stat"><b id="stAvail">0</b><span>Available</span></div>
+        <div class="adm-stat"><b id="stRes">0</b><span>Reserved</span></div>
+        <div class="adm-stat"><b id="stSold">0</b><span>Sold</span></div>
+        <div class="adm-stat"><b id="stSales">Rs 0</b><span>Total Sales</span></div>
+        <div class="adm-stat"><b id="stToday">Rs 0</b><span>Today's Sales</span></div>
+      </div>
+      <p class="adm-p" style="margin-top:16px">Sales count pieces marked Sold. Reserves and sales start empty — nothing here is sample data; the counts above come only from your real product list.</p>
+    </section>
+
+    <section class="adm-panel" data-apanel="products" hidden>
+      <h2 class="adm-h">Products</h2>
+      <p class="adm-p">Add, edit or delete pieces. Every product has 3 photo slots — Front (main), Back and Side. New photos are uploaded to the repo's assets folder when you publish.</p>
+      <div class="adm-btns"><button class="adm-btn" id="admAddProduct" type="button">+ Add Product</button></div>
+      <div id="admProductList"></div>
+      <form class="adm-form" id="admProductForm" hidden>
+        <h3 class="adm-h" id="admFormTitle" style="font-size:1.35rem">Edit Product</h3>
+        <div class="adm-grid">
+          <div class="adm-field"><label for="pfId">Product Code (e.g. M-104)</label><input id="pfId" type="text" maxlength="12" required></div>
+          <div class="adm-field"><label for="pfName">Name</label><input id="pfName" type="text" maxlength="90" required></div>
+          <div class="adm-field"><label for="pfCat">Category</label><select id="pfCat"><option value="mens">Mens</option><option value="womens">Womens</option><option value="kids">Kids</option><option value="home">Home</option></select></div>
+          <div class="adm-field"><label for="pfSub">Sub-category</label><input id="pfSub" type="text" maxlength="40" placeholder="Coats, Hoodies, Carpets (Qaleen)…"></div>
+          <div class="adm-field"><label for="pfPrice">Price (Rs)</label><input id="pfPrice" type="number" min="0" step="1" required></div>
+          <div class="adm-field"><label for="pfSize">Size</label><input id="pfSize" type="text" maxlength="20"></div>
+          <div class="adm-field"><label for="pfMeasure">Real Measurements</label><input id="pfMeasure" type="text" maxlength="80"></div>
+          <div class="adm-field"><label for="pfCond">Condition</label><select id="pfCond"><option>Excellent</option><option>Good</option><option>Fair</option></select></div>
+          <div class="adm-field"><label for="pfStatus">Status</label><select id="pfStatus"><option>Available</option><option>Reserved</option><option>Sold</option></select></div>
+          <div class="adm-field"><label for="pfPickup">Shop Pickup Only</label><select id="pfPickup"><option value="no">No</option><option value="yes">Yes</option></select></div>
+          <div class="adm-field"><label for="pfSig">Signature Piece</label><select id="pfSig"><option value="yes">Yes — show in Signature Pieces</option><option value="no">No</option></select></div>
+          <div class="adm-field"><label for="pfPos">Photo Position (optional)</label><input id="pfPos" type="text" maxlength="20" placeholder="50% 12%"></div>
+          <div class="adm-field full"><label for="pfDesc">Description</label><textarea id="pfDesc" rows="2" maxlength="300"></textarea></div>
+          <div class="adm-field full"><label for="pfAlt">Photo Alt Text</label><input id="pfAlt" type="text" maxlength="160"></div>
+        </div>
+        <div class="rev-label" style="margin:16px 0 8px">Photos — Front · Back · Side</div>
+        <div class="adm-photos">
+          <div class="adm-photo"><img id="phFrontImg" alt="Front photo preview"><div class="adm-photo-name" id="phFrontName">No front photo</div><label class="rev-label" for="phFront">Front (Main)</label><input id="phFront" type="file" accept="image/*"></div>
+          <div class="adm-photo"><img id="phBackImg" alt="Back photo preview"><div class="adm-photo-name" id="phBackName">No back photo</div><label class="rev-label" for="phBack">Back</label><input id="phBack" type="file" accept="image/*"></div>
+          <div class="adm-photo"><img id="phSideImg" alt="Side photo preview"><div class="adm-photo-name" id="phSideName">No side photo</div><label class="rev-label" for="phSide">Side</label><input id="phSide" type="file" accept="image/*"></div>
+        </div>
+        <div class="adm-btns" style="margin-top:16px">
+          <button class="adm-btn" type="submit">Save Product (in panel)</button>
+          <button class="adm-btn ghost" type="button" id="admFormCancel">Cancel</button>
+        </div>
+        <p class="adm-p" style="margin:10px 0 0">Saving here updates the panel. Press <strong>Save &amp; Publish</strong> below to send everything to the live website.</p>
+      </form>
+    </section>
+
+    <section class="adm-panel" data-apanel="reserves" hidden>
+      <h2 class="adm-h">Reserves Inbox</h2>
+      <p class="adm-p">Pieces currently held for a customer. Mark Sold when the piece is picked up and paid, or Release it back to Available. The inbox starts empty — a piece appears here only when its status is Reserved.</p>
+      <div id="admReserveList"></div>
+      <h3 class="adm-h" style="font-size:1.3rem;margin-top:26px">Sold Pieces</h3>
+      <div id="admSoldList"></div>
+    </section>
+
+    <section class="adm-panel" data-apanel="signature" hidden>
+      <h2 class="adm-h">Signature Pieces</h2>
+      <p class="adm-p">Tap the star to choose which pieces appear in the Signature Pieces carousel on the home page.</p>
+      <div id="admSigList"></div>
+    </section>
+
+    <section class="adm-panel" data-apanel="freshdrop" hidden>
+      <h2 class="adm-h">Fresh Drop Control</h2>
+      <p class="adm-p">The countdown on the website runs on a fixed cycle from the anchor date, so it never resets when the page reloads.</p>
+      <form class="adm-form" id="admDropForm" style="margin-top:4px">
+        <div class="adm-grid">
+          <div class="adm-field"><label for="dfDays">Drop every __ days</label><input id="dfDays" type="number" min="1" max="30" step="1" value="3"></div>
+          <div class="adm-field"><label for="dfAnchor">Cycle Anchor Date (first drop)</label><input id="dfAnchor" type="date" value="2026-11-23"></div>
+        </div>
+        <p class="adm-p" style="margin-top:12px" id="dfNext">Next drop: —</p>
+        <div class="adm-btns"><button class="adm-btn" type="submit">Save Drop Settings (in panel)</button></div>
+      </form>
+    </section>
+
+    <section class="adm-panel" data-apanel="website" hidden>
+      <h2 class="adm-h">Website Editor</h2>
+      <p class="adm-p">All 10 sections of the website. Edit the heading, sub-heading, body text and button label, show or hide a section, and see a live preview under each one. Publish to send the changes to the live site.</p>
+      <div id="admSections"></div>
+    </section>
+
+    <section class="adm-panel" data-apanel="social" hidden>
+      <h2 class="adm-h">Social</h2>
+      <p class="adm-p">Add or edit the shop's social profiles. Leave a field empty if the shop is not on that platform — nothing is filled in for you.</p>
+      <form class="adm-form" id="admSocialForm" style="margin-top:4px">
+        <div class="adm-grid">
+          <div class="adm-field"><label for="soInstagram">Instagram URL</label><input id="soInstagram" type="url" placeholder="https://instagram.com/…"></div>
+          <div class="adm-field"><label for="soFacebook">Facebook URL</label><input id="soFacebook" type="url" placeholder="https://facebook.com/…"></div>
+        </div>
+        <div class="adm-btns" style="margin-top:14px"><button class="adm-btn" type="submit">Save Social Links (in panel)</button></div>
+      </form>
+    </section>
+
+    <section class="adm-panel" data-apanel="settings" hidden>
+      <h2 class="adm-h">Settings</h2>
+      <form class="adm-form" id="admSettingsForm" style="margin-top:4px">
+        <div class="adm-grid">
+          <div class="adm-field"><label for="setWhatsapp">WhatsApp Number (international, digits only)</label><input id="setWhatsapp" type="text" inputmode="numeric" placeholder="92300… — leave empty until the shop number is ready"></div>
+          <div class="adm-field"><label for="setLiveUrl">Live Website URL</label><input id="setLiveUrl" type="url" value="https://onepieceshop-3vc0.netlify.app/"></div>
+        </div>
+        <p class="adm-p" style="margin-top:12px">Publishing writes to GitHub repo <strong>hasnainqazi440-cyber/one-piece-shop</strong> (branch main) — data files <strong>assets/products.json</strong> and <strong>assets/site.json</strong>, product photos into <strong>assets/</strong> — through Netlify Git Gateway, always in the request body.</p>
+        <div class="adm-btns"><button class="adm-btn" type="submit">Save Settings (in panel)</button></div>
+      </form>
+    </section>
+
+    <div class="adm-publishbar">
+      <span class="st" id="admStatus">Panel ready.</span>
+      <button class="adm-btn" id="admPublish" type="button" style="background:var(--cream);color:var(--forest);border-color:var(--cream)">Save &amp; Publish to Live Site</button>
+    </div>
+  </div>
+</div>
 
 <!-- BUY PANEL — opened by the single "Buy Now" button on every card
      and in the detail modal. Shows the two payment choices, each
@@ -962,6 +1172,54 @@
      tiles and show an "arriving soon" empty state when tapped. */
   var SUBMAP={"M-101":"Jackets","M-102":"Hoodies","M-103":"Trousers","W-201":"Long Coats","W-202":"Long Coats","W-203":"Coats","K-301":"Coats","K-302":"Coats","K-303":"Frocks","H-401":"Carpets (Qaleen)","H-402":"Bedsheets","H-403":"Curtains (Parday)"};
   PRODUCTS.forEach(function(p){ p.sub=SUBMAP[p.id]||""; });
+  /* ===== LIVE DATA — the site is data-driven =====
+     The embedded list above is only the offline fallback. On load,
+     the page reads assets/products.json (the product list) and
+     assets/site.json (section text, settings, social links) — the
+     exact files the admin panel publishes to the GitHub repo
+     through Netlify Git Gateway. Whatever the panel saves there is
+     what the website shows, with no other change needed. */
+  var SITE=null;
+  function setText(id,txt){ var el=document.getElementById(id); if(el&&txt!=null&&txt!=="") el.textContent=txt; }
+  function setHTML(id,txt){ var el=document.getElementById(id); if(el&&txt!=null&&txt!=="") el.innerHTML=txt; }
+  function applyVis(){
+    if(!SITE||!SITE.sections) return;
+    var S=SITE.sections;
+    function vis(key,id){ var el=document.getElementById(id); if(el&&S[key]) el.style.display=S[key].visible===false?"none":""; }
+    vis("collections","collections"); vis("signature","signature"); vis("freshdrop","drop");
+    vis("about","about"); vis("visit","visitSec"); vis("hero","heroPhoto");
+    var hdr=document.getElementById("siteHeader"); if(hdr&&S.header) hdr.style.display=(viewName!=="admin"&&S.header.visible===false)?"none":"";
+    var ftr=document.querySelector("footer"); if(ftr&&S.footer) ftr.style.display=(viewName!=="admin"&&S.footer.visible===false)?"none":"";
+  }
+  function applySite(site){
+    if(!site) return; SITE=site;
+    var S=site.sections||{}, st=site.settings||{};
+    if(st.whatsapp) WA_NUMBER=String(st.whatsapp).replace(/[^0-9]/g,"");
+    var days=parseInt(st.dropEveryDays,10); if(days>0){ DROP_EVERY_DAYS=days; DROP_CYCLE_MS=days*24*60*60*1000; }
+    if(st.dropAnchor){ var parts=String(st.dropAnchor).split("-"); if(parts.length===3) DROP_ANCHOR=new Date(+parts[0],+parts[1]-1,+parts[2],0,0,0,0); }
+    if(typeof tick==="function") tick();
+    if(S.header){ var bn=document.querySelector(".brand .b-name"), bs=document.querySelector(".brand .b-sub"); if(bn&&S.header.heading) bn.textContent=S.header.heading; if(bs&&S.header.sub) bs.textContent=S.header.sub; }
+    if(S.collections){ setText("secCollectionsSub",S.collections.sub); setText("secCollectionsH",S.collections.heading); }
+    if(S.signature){ setText("secSignatureSub",S.signature.sub); setText("secSignatureH",S.signature.heading); }
+    if(S.freshdrop){ setText("secDropSub",S.freshdrop.sub); setHTML("secDropH",S.freshdrop.heading); setText("secDropBody",S.freshdrop.body); setText("secDropBtn",S.freshdrop.button); }
+    if(S.about){ setText("secAboutSub",S.about.sub); setHTML("secAboutH",S.about.heading); setText("secAboutBody",S.about.body); setText("secAboutBtn",S.about.button); var ap=document.querySelector(".atelier-photo img"); if(ap&&S.about.photo) ap.src=S.about.photo; }
+    if(S.visit){ setText("secVisitSub",S.visit.sub); setHTML("secVisitH",S.visit.heading); setText("secVisitBody",S.visit.body); setText("secVisitBtn",S.visit.button); }
+    if(S.reserve){ setText("secReserveSub",S.reserve.sub); setText("secReserveH",S.reserve.heading); setText("secReserveBody",S.reserve.body); }
+    if(S.story){ setText("secStorySub",S.story.sub); setText("secStoryH",S.story.heading); setText("secStoryBody",S.story.body); }
+    if(S.footer){ setText("secFooterBody",S.footer.body); }
+    applyVis();
+  }
+  function loadLiveData(){
+    if(!window.fetch) return;
+    fetch("assets/products.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).then(function(list){
+      if(Array.isArray(list)&&list.length){
+        PRODUCTS.length=0;
+        list.forEach(function(p){ if(!p.sub) p.sub=SUBMAP[p.id]||""; if(!p.img&&p.photos&&p.photos.front) p.img=p.photos.front; PRODUCTS.push(p); });
+        render();
+      }
+    }).catch(function(){});
+    fetch("assets/site.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).then(function(site){ applySite(site); }).catch(function(){});
+  }
   var SUBCATS={
     mens:["Coats","Jackets","Trousers","Hoodies","Sweaters","Shirts","Baniyan","High-Necks"],
     womens:["Coats","Long Coats","Koti","Baniyan","Hoodies","Shirts","Trousers","Tights"],
@@ -988,9 +1246,11 @@
   }
   function renderSig(){
     var el=document.getElementById("sigGrid"); if(!el) return;
-    /* The carousel runs through every piece in the shop — all 12,
-       across all four categories — not a short static row. */
-    el.innerHTML=PRODUCTS.map(sigHTML).join("");
+    /* The carousel runs through the pieces starred as Signature in
+       the data file (the panel's Signature Pieces control). If no
+       piece is starred, it falls back to every piece in the shop. */
+    var sig=PRODUCTS.filter(function(p){return p.signature!==false});
+    el.innerHTML=(sig.length?sig:PRODUCTS).map(sigHTML).join("");
   }
   /* Carousel: arrows slide one card at a time; auto-slide advances
      gently and loops back to the start; swipe is native on touch.
@@ -1378,7 +1638,7 @@
   tick(); setInterval(tick,1000);
 
   /* ===== Views & routing — home / category pages / reserve page ===== */
-  var viewHome=document.getElementById("view-home"), viewPage=document.getElementById("view-page"), viewReserve=document.getElementById("view-reserve"), viewDetail=document.getElementById("view-detail");
+  var viewHome=document.getElementById("view-home"), viewPage=document.getElementById("view-page"), viewReserve=document.getElementById("view-reserve"), viewDetail=document.getElementById("view-detail"), viewAdmin=document.getElementById("view-admin");
   /* The browser must never restore an old scroll position for these
      in-page views — every view switch starts at its own header. */
   if("scrollRestoration" in history) history.scrollRestoration="manual";
@@ -1389,7 +1649,13 @@
     viewPage.hidden=name!=="page";
     viewReserve.hidden=name!=="reserve";
     viewDetail.hidden=name!=="detail";
-    currentView=name==="home"?viewHome:(name==="page"?viewPage:(name==="reserve"?viewReserve:viewDetail));
+    if(viewAdmin) viewAdmin.hidden=name!=="admin";
+    var hdr=document.getElementById("siteHeader"), ftr=document.querySelector("footer");
+    if(hdr) hdr.style.display=name==="admin"?"none":"";
+    if(ftr) ftr.style.display=name==="admin"?"none":"";
+    var wf=document.querySelector(".wa-float"); if(wf) wf.style.display=name==="admin"?"none":"";
+    if(name!=="admin") applyVis();
+    currentView=name==="home"?viewHome:(name==="page"?viewPage:(name==="reserve"?viewReserve:(name==="admin"?viewAdmin:viewDetail)));
     if(window.ScrollTrigger) setTimeout(function(){ScrollTrigger.refresh()},60);
   }
   var currentView=viewHome;
@@ -1462,7 +1728,8 @@
   }
   function applyRoute(key){
     detailStack.length=0; currentDetail=null;
-    if(CATS.indexOf(key)>-1){ openCategory(key); jumpTopHard(); }
+    if(key==="admin"){ activeCat=null; showView("admin"); jumpTopHard(); if(window.__opsAdminInit) window.__opsAdminInit(); }
+    else if(CATS.indexOf(key)>-1){ openCategory(key); jumpTopHard(); }
     else if(key==="reserve"){ activeCat=null; showView("reserve"); jumpTopHard(); }
     else { activeCat=null; showView("home"); if(savedHomeScroll!==null){ restoreHomeScroll(); } else { jumpTopHard(); } }
   }
@@ -1479,6 +1746,7 @@
   }
   window.addEventListener("hashchange",route);
   window.addEventListener("popstate",route);
+  loadLiveData();
   /* Internal links switch views directly on tap — the view change never
      depends on the browser following a fragment link, and the new page
      opens instantly at its own header. Plain in-page anchors (Search,
@@ -1660,6 +1928,393 @@
       });
     }
   }
+})();
+</script>
+<script>
+/* ================================================================
+   ONE PIECE SHOP — ADMIN PANEL (live, at /admin → #/admin here)
+   Login: Netlify Identity (the widget loaded in <head>).
+   Data: the panel loads assets/products.json + assets/site.json —
+   the same files the storefront reads.
+   Publish: Netlify Git Gateway → GitHub repo
+   hasnainqazi440-cyber/one-piece-shop, branch main. Every write is
+   a PUT with the file content in the REQUEST BODY (base64) — data
+   is NEVER sent in the URL (the Crunches 414 lesson). Product
+   photos are uploaded the same way into the repo's assets/ folder.
+   Until publish is pressed, edits live only in this tab's memory.
+   Reserves and sales start empty: the reserves inbox lists only
+   pieces whose status is Reserved, and sales count Sold pieces.
+   ================================================================ */
+(function(){
+  "use strict";
+  var REPO_CONTENTS="/.netlify/git/github/contents/";
+  var products=[], site=null, editingId=null, pendingPhotos={}, inited=false;
+  var soldToday={}; /* id -> true, for pieces marked Sold in this session */
+  var CATL={mens:"Mens",womens:"Womens",kids:"Kids",home:"Home"};
+  var SECTIONS=[
+    ["header","Header / Top Bar"],["hero","Hero"],["collections","Our Collections"],
+    ["signature","Signature Pieces"],["freshdrop","Fresh Drop"],["reserve","How to Reserve"],
+    ["about","About / Our Atelier"],["visit","Visit the Shop"],["story","Become Part of the Story"],
+    ["footer","Footer"]
+  ];
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function money(n){ return "Rs "+Number(n||0).toLocaleString("en-PK"); }
+  function setStatus(msg){ var el=$("admStatus"); if(el) el.textContent=msg; }
+  function setNote(msg){ var el=$("admNote"); if(el) el.innerHTML=msg; }
+
+  /* ---------- Load the live data files ---------- */
+  function loadData(){
+    var p1=fetch("assets/products.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():[]; }).catch(function(){ return []; });
+    var p2=fetch("assets/site.json",{cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).catch(function(){ return null; });
+    Promise.all([p1,p2]).then(function(res){
+      products=Array.isArray(res[0])?res[0]:[];
+      site=res[1]||{settings:{whatsapp:"",liveUrl:"https://onepieceshop-3vc0.netlify.app/",dropEveryDays:3,dropAnchor:"2026-11-23",instagram:"",facebook:""},sections:{}};
+      if(!site.settings) site.settings={};
+      if(!site.sections) site.sections={};
+      renderAll();
+      setStatus("Loaded "+products.length+" products from the live data files.");
+    });
+  }
+
+  /* ---------- Dashboard ---------- */
+  function renderDashboard(){
+    var av=0,rs=0,so=0,sales=0,today=0;
+    products.forEach(function(p){
+      if(p.status==="Available") av++;
+      else if(p.status==="Reserved") rs++;
+      else if(p.status==="Sold"){ so++; sales+=Number(p.price)||0; if(soldToday[p.id]) today+=Number(p.price)||0; }
+    });
+    $("stTotal").textContent=products.length;
+    $("stAvail").textContent=av;
+    $("stRes").textContent=rs;
+    $("stSold").textContent=so;
+    $("stSales").textContent=money(sales);
+    $("stToday").textContent=money(today);
+  }
+
+  /* ---------- Products list ---------- */
+  function rowHTML(p,actions){
+    return '<div class="adm-row"><div class="adm-row-main"><img src="'+esc(p.img||(p.photos&&p.photos.front)||"")+'" alt=""><div><div class="adm-row-name">'+esc(p.name)+'</div><div class="adm-row-meta">'+esc(CATL[p.cat]||p.cat)+' • '+esc(p.id)+' • '+money(p.price)+' • Size '+esc(p.size||"—")+' • '+esc(p.status)+'</div></div></div><div class="adm-btns">'+actions+'</div></div>';
+  }
+  function renderProducts(){
+    var el=$("admProductList");
+    if(!products.length){ el.innerHTML='<div class="adm-empty">No products yet. Press “+ Add Product” to add the first piece.</div>'; return; }
+    el.innerHTML=products.map(function(p){
+      return rowHTML(p,'<button class="adm-btn ghost" type="button" data-edit="'+esc(p.id)+'">Edit</button><button class="adm-btn danger" type="button" data-del="'+esc(p.id)+'">Delete</button>');
+    }).join("");
+  }
+  function renderReserves(){
+    var res=products.filter(function(p){ return p.status==="Reserved"; });
+    var sold=products.filter(function(p){ return p.status==="Sold"; });
+    $("admReserveList").innerHTML=res.length?res.map(function(p){
+      return rowHTML(p,'<button class="adm-btn" type="button" data-sold="'+esc(p.id)+'">Mark Sold</button><button class="adm-btn ghost" type="button" data-release="'+esc(p.id)+'">Release</button>');
+    }).join(""):'<div class="adm-empty">No reserves right now — the inbox is empty.</div>';
+    $("admSoldList").innerHTML=sold.length?sold.map(function(p){ return rowHTML(p,'<span class="adm-row-meta">Sold — '+money(p.price)+'</span>'); }).join(""):'<div class="adm-empty">No sold pieces yet.</div>';
+  }
+  function renderSignature(){
+    $("admSigList").innerHTML=products.length?products.map(function(p){
+      var on=p.signature!==false;
+      return '<div class="adm-row"><div class="adm-row-main"><button class="adm-star'+(on?" on":"")+'" type="button" data-star="'+esc(p.id)+'" aria-label="Toggle signature for '+esc(p.name)+'">'+(on?"★":"☆")+'</button><img src="'+esc(p.img||"")+'" alt=""><div><div class="adm-row-name">'+esc(p.name)+'</div><div class="adm-row-meta">'+esc(p.id)+' • '+(on?"In Signature Pieces":"Not in Signature Pieces")+'</div></div></div></div>';
+    }).join(""):'<div class="adm-empty">No products yet.</div>';
+  }
+
+  /* ---------- Website editor ---------- */
+  function renderSections(){
+    var wrap=$("admSections"); if(!wrap) return;
+    wrap.innerHTML=SECTIONS.map(function(pair){
+      var key=pair[0], label=pair[1], s=(site.sections&&site.sections[key])||{};
+      return '<div class="adm-sec-edit" data-sec="'+key+'"><h3>'+esc(label)+'</h3><div class="adm-grid">'
+        +'<div class="adm-field"><label>Heading</label><input type="text" data-f="heading" value="'+esc(s.heading||"")+'"></div>'
+        +'<div class="adm-field"><label>Sub-heading</label><input type="text" data-f="sub" value="'+esc(s.sub||"")+'"></div>'
+        +'<div class="adm-field full"><label>Body Text</label><textarea rows="2" data-f="body">'+esc(s.body||"")+'</textarea></div>'
+        +'<div class="adm-field"><label>Button Label</label><input type="text" data-f="button" value="'+esc(s.button||"")+'"></div>'
+        +'<div class="adm-field"><label>Show / Hide</label><select data-f="visible"><option value="show"'+(s.visible===false?"":" selected")+'>Show on website</option><option value="hide"'+(s.visible===false?" selected":"")+'>Hide from website</option></select></div>'
+        +(key==="about"?'<div class="adm-field full"><label>Shop Photo (About section) — path or pick after publishing a product photo</label><input type="text" data-f="photo" value="'+esc(s.photo||"")+'" placeholder="assets/your-shop-photo.jpg — empty until you add your own shop photo"></div>':"")
+        +'</div><div class="adm-preview"><div class="pv-s" data-pv="sub">'+esc(s.sub||"")+'</div><div class="pv-h" data-pv="heading">'+esc(s.heading||"")+'</div><div class="pv-b" data-pv="body">'+esc(s.body||"")+'</div></div></div>';
+    }).join("");
+  }
+  function collectSections(){
+    document.querySelectorAll("[data-sec]").forEach(function(card){
+      var key=card.getAttribute("data-sec");
+      var s=site.sections[key]||(site.sections[key]={});
+      card.querySelectorAll("[data-f]").forEach(function(inp){
+        var f=inp.getAttribute("data-f");
+        if(f==="visible") s.visible=inp.value!=="hide";
+        else s[f]=inp.value;
+      });
+      s.label=card.querySelector("h3").textContent;
+    });
+  }
+
+  /* ---------- Forms ---------- */
+  function fillSettings(){
+    var st=site.settings||{};
+    $("setWhatsapp").value=st.whatsapp||"";
+    $("setLiveUrl").value=st.liveUrl||"https://onepieceshop-3vc0.netlify.app/";
+    $("admVisitBtn").href=st.liveUrl||"https://onepieceshop-3vc0.netlify.app/";
+    $("soInstagram").value=st.instagram||"";
+    $("soFacebook").value=st.facebook||"";
+    $("dfDays").value=st.dropEveryDays||3;
+    $("dfAnchor").value=st.dropAnchor||"2026-11-23";
+    updateNextDrop();
+  }
+  function updateNextDrop(){
+    var days=parseInt($("dfDays").value,10)||3;
+    var a=$("dfAnchor").value||"2026-11-23";
+    var parts=a.split("-"); if(parts.length!==3) return;
+    var anchor=new Date(+parts[0],+parts[1]-1,+parts[2],0,0,0,0);
+    var cycle=days*86400000, now=new Date();
+    var n=Math.floor((now-anchor)/cycle)+1;
+    var next=new Date(anchor.getTime()+n*cycle);
+    $("dfNext").textContent="Next drop: "+next.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})+" — every "+days+" days from "+anchor.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})+".";
+  }
+  function photoPreview(slot,src,name){
+    var img=$(slot==="front"?"phFrontImg":slot==="back"?"phBackImg":"phSideImg");
+    var nm=$(slot==="front"?"phFrontName":slot==="back"?"phBackName":"phSideName");
+    if(img) img.src=src||"";
+    if(nm) nm.textContent=name||("No "+slot+" photo");
+  }
+  function openForm(p){
+    editingId=p?p.id:null; pendingPhotos={};
+    $("admFormTitle").textContent=p?("Edit Product — "+p.id):"Add Product";
+    $("pfId").value=p?p.id:""; $("pfId").disabled=!!p;
+    $("pfName").value=p?p.name:"";
+    $("pfCat").value=p?p.cat:"mens";
+    $("pfSub").value=p?(p.sub||""):"";
+    $("pfPrice").value=p?p.price:"";
+    $("pfSize").value=p?(p.size||""):"";
+    $("pfMeasure").value=p?(p.measure||""):"";
+    $("pfCond").value=p?(p.cond||"Excellent"):"Excellent";
+    $("pfStatus").value=p?(p.status||"Available"):"Available";
+    $("pfPickup").value=p&&p.pickup?"yes":"no";
+    $("pfSig").value=p&&p.signature===false?"no":"yes";
+    $("pfPos").value=p?(p.pos||""):"";
+    $("pfDesc").value=p?(p.desc||""):"";
+    $("pfAlt").value=p?(p.alt||""):"";
+    var ph=(p&&p.photos)||{};
+    photoPreview("front",ph.front||(p?p.img:""),ph.front||(p?p.img:""));
+    photoPreview("back",ph.back||"",ph.back||"");
+    photoPreview("side",ph.side||"",ph.side||"");
+    $("phFront").value=""; $("phBack").value=""; $("phSide").value="";
+    $("admProductForm").hidden=false;
+    $("admProductForm").scrollIntoView({block:"start"});
+  }
+  function closeForm(){ $("admProductForm").hidden=true; editingId=null; pendingPhotos={}; }
+
+  function renderAll(){ renderDashboard(); renderProducts(); renderReserves(); renderSignature(); renderSections(); fillSettings(); }
+
+  /* ---------- Tabs ---------- */
+  document.addEventListener("click",function(e){
+    var t=e.target&&e.target.closest?e.target.closest("[data-atab]"):null;
+    if(!t) return;
+    document.querySelectorAll("[data-atab]").forEach(function(b){ b.classList.toggle("here",b===t); });
+    document.querySelectorAll("[data-apanel]").forEach(function(pn){ pn.hidden=pn.getAttribute("data-apanel")!==t.getAttribute("data-atab"); });
+  });
+  /* Live preview in the website editor */
+  document.addEventListener("input",function(e){
+    var inp=e.target&&e.target.closest?e.target.closest("[data-sec] [data-f]"):null;
+    if(!inp) return;
+    var card=inp.closest("[data-sec]"); if(!card) return;
+    var f=inp.getAttribute("data-f");
+    var pv=card.querySelector('[data-pv="'+f+'"]');
+    if(pv) pv.textContent=inp.value;
+  });
+  /* Section editor fields feed the preview for select changes too */
+  document.addEventListener("change",function(e){
+    if(e.target&&e.target.id==="dfDays"||e.target&&e.target.id==="dfAnchor") updateNextDrop();
+  });
+
+  /* ---------- Product actions ---------- */
+  document.addEventListener("click",function(e){
+    var c=e.target&&e.target.closest?e.target.closest("[data-edit],[data-del],[data-sold],[data-release],[data-star]"):null;
+    if(!c) return;
+    function find(id){ return products.filter(function(p){ return p.id===id; })[0]; }
+    if(c.hasAttribute("data-edit")){ var p=find(c.getAttribute("data-edit")); if(p) openForm(p); }
+    else if(c.hasAttribute("data-del")){
+      var id=c.getAttribute("data-del");
+      products=products.filter(function(p){ return p.id!==id; });
+      if(editingId===id) closeForm();
+      renderAll(); setStatus("Deleted "+id+" in the panel — publish to make it live.");
+    }
+    else if(c.hasAttribute("data-sold")){
+      var p2=find(c.getAttribute("data-sold")); if(p2){ p2.status="Sold"; soldToday[p2.id]=true; renderAll(); setStatus(p2.id+" marked Sold — publish to make it live."); }
+    }
+    else if(c.hasAttribute("data-release")){
+      var p3=find(c.getAttribute("data-release")); if(p3){ p3.status="Available"; renderAll(); setStatus(p3.id+" released back to Available — publish to make it live."); }
+    }
+    else if(c.hasAttribute("data-star")){
+      var p4=find(c.getAttribute("data-star")); if(p4){ p4.signature=p4.signature===false?true:false; renderSignature(); renderDashboard(); setStatus(p4.id+(p4.signature?" added to":" removed from")+" Signature Pieces — publish to make it live."); }
+    }
+  });
+  $("admAddProduct").addEventListener("click",function(){ openForm(null); });
+  $("admFormCancel").addEventListener("click",closeForm);
+  ["front","back","side"].forEach(function(slot){
+    var input=$(slot==="front"?"phFront":slot==="back"?"phBack":"phSide");
+    if(!input) return;
+    input.addEventListener("change",function(){
+      var file=input.files&&input.files[0]; if(!file) return;
+      var reader=new FileReader();
+      reader.onload=function(){
+        var dataUrl=String(reader.result||"");
+        pendingPhotos[slot]={name:file.name,dataUrl:dataUrl};
+        photoPreview(slot,dataUrl,file.name+" (new — uploads on publish)");
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  $("admProductForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var id=$("pfId").value.trim().toUpperCase();
+    if(!id){ setStatus("Give the product a code first (e.g. M-104)."); return; }
+    var existing=products.filter(function(p){ return p.id===id; })[0];
+    if(!existing&&editingId){ existing=products.filter(function(p){ return p.id===editingId; })[0]; }
+    var p=existing||{id:id,photos:{front:"",back:"",side:""}};
+    p.id=id;
+    p.name=$("pfName").value.trim();
+    p.cat=$("pfCat").value;
+    p.sub=$("pfSub").value.trim();
+    p.price=parseInt($("pfPrice").value,10)||0;
+    p.size=$("pfSize").value.trim();
+    p.measure=$("pfMeasure").value.trim();
+    p.cond=$("pfCond").value;
+    p.status=$("pfStatus").value;
+    p.pickup=$("pfPickup").value==="yes";
+    p.signature=$("pfSig").value==="yes";
+    p.pos=$("pfPos").value.trim();
+    p.desc=$("pfDesc").value.trim();
+    p.alt=$("pfAlt").value.trim()||p.name;
+    if(!p.photos) p.photos={front:p.img||"",back:"",side:""};
+    ["front","back","side"].forEach(function(slot){
+      if(pendingPhotos[slot]){
+        var ext=(pendingPhotos[slot].name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";
+        p.photos[slot]="assets/"+id.toLowerCase()+"-"+slot+"."+ext;
+        pendingPhotos[slot].path=p.photos[slot];
+        p["_pending_"+slot]=pendingPhotos[slot];
+      }
+    });
+    if(p.photos.front) p.img=p.photos.front;
+    if(!existing) products.push(p);
+    renderAll();
+    setStatus("Saved "+id+" in the panel — press Save & Publish to send it to the live website.");
+    closeForm();
+  });
+  $("admDropForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    site.settings.dropEveryDays=Math.max(1,parseInt($("dfDays").value,10)||3);
+    site.settings.dropAnchor=$("dfAnchor").value||"2026-11-23";
+    updateNextDrop();
+    setStatus("Fresh Drop set to every "+site.settings.dropEveryDays+" days — publish to make it live.");
+  });
+  $("admSocialForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    site.settings.instagram=$("soInstagram").value.trim();
+    site.settings.facebook=$("soFacebook").value.trim();
+    setStatus("Social links saved in the panel — publish to make them live.");
+  });
+  $("admSettingsForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    site.settings.whatsapp=$("setWhatsapp").value.replace(/[^0-9]/g,"");
+    site.settings.liveUrl=$("setLiveUrl").value.trim()||"https://onepieceshop-3vc0.netlify.app/";
+    $("admVisitBtn").href=site.settings.liveUrl;
+    setStatus("Settings saved in the panel — publish to make them live.");
+  });
+
+  /* ---------- Netlify Identity ---------- */
+  function currentUser(){ return (window.netlifyIdentity&&window.netlifyIdentity.currentUser)?window.netlifyIdentity.currentUser():null; }
+  function paintAuth(){
+    var u=currentUser();
+    $("admUser").textContent=u?("Logged in: "+(u.email||"")):"Not logged in";
+    $("admLoginBtn").hidden=!!u;
+    $("admLogoutBtn").hidden=!u;
+    if(u) setNote("");
+    else setNote("You are viewing the panel without logging in. Everything can be edited here, but <strong>Save &amp; Publish</strong> needs a Netlify Identity login — open <strong>onepieceshop-3vc0.netlify.app/admin</strong>, log in, and publish from there. No Decap CMS is used anywhere in this panel.");
+  }
+  if(window.netlifyIdentity){
+    window.netlifyIdentity.on("init",paintAuth);
+    window.netlifyIdentity.on("login",function(){ paintAuth(); setStatus("Logged in — you can publish now."); });
+    window.netlifyIdentity.on("logout",function(){ paintAuth(); });
+  }
+  $("admLoginBtn").addEventListener("click",function(){
+    if(window.netlifyIdentity) window.netlifyIdentity.open();
+    else setNote("Netlify Identity loads on the live site. Open <strong>onepieceshop-3vc0.netlify.app/admin</strong> and use the login button there.");
+  });
+  $("admLogoutBtn").addEventListener("click",function(){ if(window.netlifyIdentity) window.netlifyIdentity.logout(); });
+
+  /* ---------- Publish — Git Gateway, body only, never the URL ---------- */
+  function b64(str){ return btoa(unescape(encodeURIComponent(str))); }
+  function ghGet(path,token){
+    return fetch(REPO_CONTENTS+path,{headers:{"Authorization":"Bearer "+token}}).then(function(r){ return r.ok?r.json():null; }).catch(function(){ return null; });
+  }
+  function ghPut(path,base64Content,message,token,sha){
+    var body={message:message,content:base64Content,branch:"main"};
+    if(sha) body.sha=sha;
+    return fetch(REPO_CONTENTS+path,{
+      method:"PUT",
+      headers:{"Authorization":"Bearer "+token,"Content-Type":"application/json"},
+      body:JSON.stringify(body)
+    }).then(function(r){
+      if(!r.ok) return r.text().then(function(t){ throw new Error("Git Gateway "+r.status+": "+String(t).slice(0,160)); });
+      return r.json();
+    });
+  }
+  function publishFile(path,text,token){
+    return ghGet(path,token).then(function(cur){ return ghPut(path,b64(text),"Update "+path+" via One Piece Shop admin panel",token,cur&&cur.sha); });
+  }
+  function publishPhoto(path,dataUrl,token){
+    var base64=String(dataUrl).split(",")[1]||"";
+    return ghGet(path,token).then(function(cur){ return ghPut(path,base64,"Upload product photo "+path+" via admin panel",token,cur&&cur.sha); });
+  }
+  $("admPublish").addEventListener("click",function(){
+    var u=currentUser();
+    if(!u||!u.token||!u.token.access_token){
+      setStatus("Publishing needs a Netlify Identity login on the live site (onepieceshop-3vc0.netlify.app/admin). Your edits are still held in this tab.");
+      if(window.netlifyIdentity) window.netlifyIdentity.open();
+      return;
+    }
+    collectSections();
+    site.settings.whatsapp=$("setWhatsapp").value.replace(/[^0-9]/g,"");
+    site.settings.liveUrl=$("setLiveUrl").value.trim()||site.settings.liveUrl;
+    site.settings.instagram=$("soInstagram").value.trim();
+    site.settings.facebook=$("soFacebook").value.trim();
+    site.settings.dropEveryDays=Math.max(1,parseInt($("dfDays").value,10)||3);
+    site.settings.dropAnchor=$("dfAnchor").value||"2026-11-23";
+    var token=u.token.access_token;
+    var btn=$("admPublish"); btn.disabled=true;
+    setStatus("Publishing… uploading photos first.");
+    var jobs=[];
+    products.forEach(function(p){
+      ["front","back","side"].forEach(function(slot){
+        var pend=p["_pending_"+slot];
+        if(pend&&pend.path) jobs.push(publishPhoto(pend.path,pend.dataUrl,token));
+      });
+    });
+    Promise.all(jobs).then(function(){
+      setStatus("Photos uploaded. Publishing products.json…");
+      var clean=products.map(function(p){
+        var c={}; Object.keys(p).forEach(function(k){ if(k.indexOf("_pending_")!==0) c[k]=p[k]; });
+        return c;
+      });
+      return publishFile("assets/products.json",JSON.stringify(clean,null,2),token);
+    }).then(function(){
+      setStatus("Products published. Publishing site.json…");
+      return publishFile("assets/site.json",JSON.stringify(site,null,2),token);
+    }).then(function(){
+      products.forEach(function(p){ ["front","back","side"].forEach(function(slot){ delete p["_pending_"+slot]; }); });
+      setStatus("Published ✓ — Netlify is redeploying; the live website updates in under a minute.");
+    }).catch(function(err){
+      setStatus("Publishing failed: "+(err&&err.message?err.message:err));
+    }).then(function(){ btn.disabled=false; });
+  });
+
+  /* ---------- Init (called by the router when #/admin opens) ---------- */
+  window.__opsAdminInit=function(){
+    paintAuth();
+    if(inited) return;
+    inited=true;
+    loadData();
+  };
+  if((location.hash||"").indexOf("admin")>-1) window.__opsAdminInit();
 })();
 </script>
 </body>
